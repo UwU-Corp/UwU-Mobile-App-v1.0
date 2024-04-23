@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>UwU</title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.js"
+    ></script>
+
+    <link rel="icon" type="image/x-icon" href="./assets/icon/LOGO.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <script type="module" src="./js/main.js"></script>
+
+    <meta name="theme-color" content="#31d53d" />
+  </head>
+  <body class="gray_bg">
+    <div class="container-fluid acc_bg">
+      <br /><br /><br />
+      <!-- Header -->
+      <div class="container">
+        <div class="row" data-bs-toggle="modal" data-bs-target="#LoginModal">
+          <div class="col-md-2 col-3">
+            <img
+              src="./assets/imgs/Account.png"
+              class="rounded-circle acc_img"
+              alt=""
+            />
+          </div>
+          <div class="col-md-10 col-9 my-auto">
+            <h2 class="fw-bold text-white">Login or Sign up</h2>
+          </div>
+        </div>
+      </div>
+      <!-- End of Header -->
+      <br />
+
+      <!-- Account Box -->
+
+      <div class="container bg-white shadow-sm rounded-4">
+        <div class="container pt-4 pb-4">
+          <div
+            class="row"
+            data-bs-toggle="modal"
+            data-bs-target="#bookingDetails"
+          >
+            <div class="col acc_icon">
+              <h5>
+                <i class="bi bi-file-text pe-3"></i> Bookings<i
+                  class="bi bi-chevron-right float-end"
+                ></i>
+              </h5>
+            </div>
+          </div>
+          <hr class="border-dark-subtle" />
+          <div class="row" data-bs-toggle="modal" data-bs-target="#personaInfo">
+            <div class="col acc_icon">
+              <h5>
+                <i class="bi bi-chat-right-text pe-3"></i> Personal Info<i
+                  class="bi bi-chevron-right float-end"
+                ></i>
+              </h5>
+            </div>
+          </div>
+          <hr class="border-dark-subtle" />
+          <div class="row">
+            <div class="col acc_icon">
+              <h5>
+                <i class="bi bi-envelope pe-3"></i> Notifications<i
+                  class="bi bi-chevron-right float-end"
+                ></i>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Account Box -->
+      <br />
+    </div>
+
+    <!-- Account Box 2 -->
+    <div class="container-fluid">
+      <div class="container bg-white shadow-sm rounded-4">
+        <div class="container pt-4 pb-4">
+          <div class="row" data-bs-toggle="modal" data-bs-target="#faqModal">
+            <div class="col acc_icon">
+              <h5>
+                <i class="bi bi-question-circle pe-3"></i> Help Center<i
+                  class="bi bi-chevron-right float-end"
+                ></i>
+              </h5>
+            </div>
+          </div>
+          <hr class="border-dark-subtle" />
+          <div class="row" data-bs-toggle="modal" data-bs-target="#LoginModal">
+            <div class="col acc_icon">
+              <h5>
+                <i class="bi bi-box-arrow-left pe-3"></i> Login<i
+                  class="bi bi-chevron-right float-end"
+                ></i>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br /><br />
+      <br /><br />
+    </div>
+    <!-- End of Account Box 2 -->
+
+    <!-- Login Modal  -->
+    <div
+      class="modal fade"
+      id="LoginModal"
+      aria-labelledby="LoginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="container btn_hotel">
+            <button
+              type="button"
+              class="btn-close btn_bg"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body position-relative">
+            <div
+              class="container position-absolute top-50 start-50 translate-middle"
+            >
+              <div class="row">
+                <div class="col text-center">
+                  <img src="./assets/icon/UwU Logo.svg" width="250px" />
+                </div>
+              </div>
+              <div class="row">
+                <!-- !!start of col 1 -->
+                <div class="col"></div>
+                <!-- !!end of col 1 -->
+
+                <!-- !!Start of col 2 -->
+                <div class="col-9">
+                  <form>
+                    <br />
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="floatingEmail"
+                        placeholder="Email"
+                      />
+                      <label for="floatingusername">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="floatingPassword"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="d-grid gap-2">
+                      <button type="login" class="btn btn-1 btn-lg">
+                        <!--FIXME: this is temporary  -->
+                        <a
+                          href="admin.html"
+                          class="text-decoration-none text-white"
+                          >Login</a
+                        >
+                        <!-- End of Fixme -->
+                      </button>
+                      <hr />
+                    </div>
+                    <br />
+                    <div class="text-center">
+                      <p>Not a member?</p>
+                      <a
+                        class="text-decoration-none"
+                        data-bs-toggle="modal"
+                        data-bs-target="#SignupModal"
+                        >Create an account</a
+                      >
+                    </div>
+                  </form>
+                </div>
+
+                <!-- !!end of col 2 -->
+
+                <!-- !! start of col 3 -->
+                <div class="col"></div>
+
+                <!-- !!end of col 3 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Login Modal -->
+
+    <!-- Signup Modal  -->
+    <div
+      class="modal fade"
+      id="SignupModal"
+      aria-labelledby="SignupModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="container btn_hotel">
+            <button
+              type="button"
+              class="btn-close btn_bg"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <br />
+            <div class="container">
+              <div class="row">
+                <div class="col text-center">
+                  <img src="./assets/icon/UwU Logo.svg" width="250px" />
+                </div>
+              </div>
+              <div class="row">
+                <!-- *Start of Col 1 -->
+                <div class="col"></div>
+                <!-- *End of Col 1 -->
+
+                <!-- *Start of Col 2 -->
+                <div class="col-9 text-center pl-5">
+                  <form>
+                    <br />
+                    <div class="form-floating mb-3">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="floatingemail"
+                        placeholder="example@example.com"
+                      />
+                      <label for="floatingemail">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="floatingPassword"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Password</label>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-floating mb-3 text-truncate">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="floatingfname"
+                          placeholder="First Name"
+                        />
+                        <label class="d-inline-block" for="floatingfname"
+                          >First Name</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-floating mb-3 text-truncate">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="floatinglname"
+                          placeholder="Last Name"
+                        />
+                        <label for="floatinglname">Last Name</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-floating mb-3 text-truncate">
+                        <input
+                          type="tel"
+                          class="form-control"
+                          id="floatingcontact"
+                          placeholder="Contact"
+                        />
+                        <label for="floatingcontact">Contact</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <textarea
+                        type="text"
+                        class="form-control"
+                        id="floatingaddress"
+                        placeholder="Address"
+                        rows="4"
+                      ></textarea>
+                      <div class="form-floating mb-3 text-truncate">
+                        <label for="floatingaddress">Address</label>
+                      </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                      <button type="register" class="btn btn-1 btn-lg">
+                        Sign up
+                      </button>
+                    </div>
+                    <hr />
+                    <br />
+                    <p class="fs-6">
+                      Already have an account?
+                      <a
+                        class="text-decoration-none"
+                        data-bs-toggle="modal"
+                        data-bs-target="#LoginModal"
+                        >Login</a
+                      >
+                    </p>
+                  </form>
+                </div>
+                <!-- *End of Col 2 -->
+
+                <!-- *Start of Col 3 -->
+                <div class="col"></div>
+                <!-- *End of Col 3 -->
+              </div>
+              <!--* End of Row -->
+            </div>
+            <!-- *End of Container -->
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+    <!-- End of Signup Modal -->
+
+    <!-- Faq Modal -->
+    <div
+      class="modal fade"
+      id="faqModal"
+      aria-labelledby="faqModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header container">
+            <h1 class="modal-title fs-5" id="faqModalLabel">Help Center</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <section>
+              <div class="container">
+                <div class="row justify-content-md-center">
+                  <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+                    <h2 class="mb-4 display-5 text-center">
+                      Frequently Asked Questions
+                    </h2>
+                    <p class="text-secondary text-center lead fs-4">
+                      Welcome to our FAQ page, your one-stop resource for
+                      answers to commonly asked questions.
+                    </p>
+                    <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-8">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-11 col-xl-10">
+                      <div class="d-flex align-items-end mb-5">
+                        <i class="bi bi-people me-3 lh-1 display-5"></i>
+                        <h3 class="m-0">Popular topics</h3>
+                      </div>
+                    </div>
+                    <div class="col-11 col-xl-10">
+                      <div class="accordion accordion-flush" id="faqAccount">
+                        <div
+                          class="accordion-item bg-transparent border-top border-bottom py-3"
+                        >
+                          <h2 class="accordion-header" id="faqAccountHeading1">
+                            <button
+                              class="accordion-button collapsed bg-transparent fw-bold shadow-none link-primary"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#faqAccountCollapse1"
+                              aria-expanded="false"
+                              aria-controls="faqAccountCollapse1"
+                            >
+                              What is an account?
+                            </button>
+                          </h2>
+                          <div
+                            id="faqAccountCollapse1"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="faqAccountHeading1"
+                          >
+                            <div class="accordion-body">
+                              <p>
+                                An account is a personal or organizational
+                                record that allows you to access and manage
+                                various services, often requiring authentication
+                                through a <strong>email</strong> and
+                                <strong>password</strong>.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="accordion-item bg-transparent border-bottom py-3"
+                        >
+                          <h2 class="accordion-header" id="faqAccountHeading2">
+                            <button
+                              class="accordion-button collapsed bg-transparent fw-bold shadow-none link-primary"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#faqAccountCollapse2"
+                              aria-expanded="false"
+                              aria-controls="faqAccountCollapse2"
+                            >
+                              How do I create an account?
+                            </button>
+                          </h2>
+                          <div
+                            id="faqAccountCollapse2"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="faqAccountHeading2"
+                          >
+                            <div class="accordion-body">
+                              <p>
+                                To create an account, click the account button
+                                in the right corner and look for a
+                                <strong>"Login"</strong> or
+                                <strong>"Signup"</strong> button. Follow the
+                                instructions to enter your information and
+                                create a email and password.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="accordion-item bg-transparent border-bottom py-3"
+                        >
+                          <h2 class="accordion-header" id="faqAccountHeading3">
+                            <button
+                              class="accordion-button collapsed bg-transparent fw-bold shadow-none link-primary"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#faqAccountCollapse3"
+                              aria-expanded="false"
+                              aria-controls="faqAccountCollapse3"
+                            >
+                              What should I do if I forget my password?
+                            </button>
+                          </h2>
+                          <div
+                            id="faqAccountCollapse3"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="faqAccountHeading3"
+                          >
+                            <div class="accordion-body">
+                              <p>
+                                If you forget your password, most websites and
+                                services offer a
+                                <strong>"Forgot Password"</strong> or
+                                <strong>"Reset Password"</strong> option. Follow
+                                the steps to reset your password, often
+                                involving an email or SMS verification.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="accordion-item bg-transparent border-bottom py-3"
+                        >
+                          <h2 class="accordion-header" id="faqAccountHeading4">
+                            <button
+                              class="accordion-button collapsed bg-transparent fw-bold shadow-none link-primary"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#faqAccountCollapse4"
+                              aria-expanded="false"
+                              aria-controls="faqAccountCollapse4"
+                            >
+                              When will I receive my booking confirmation?
+                            </button>
+                          </h2>
+                          <div
+                            id="faqAccountCollapse4"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="faqAccountHeading4"
+                          >
+                            <div class="accordion-body">
+                              <p>
+                                For activities with instant confirmation: You
+                                will receive your
+                                <strong>booking confirmation email</strong>
+                                within 5 minutes of making your booking.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="accordion-item bg-transparent border-bottom py-3"
+                        >
+                          <h2 class="accordion-header" id="faqAccountHeading5">
+                            <button
+                              class="accordion-button collapsed bg-transparent fw-bold shadow-none link-primary"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#faqAccountCollapse5"
+                              aria-expanded="false"
+                              aria-controls="faqAccountCollapse5"
+                            >
+                              How can I cancel my booking?
+                            </button>
+                          </h2>
+                          <div
+                            id="faqAccountCollapse5"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="faqAccountHeading5"
+                          >
+                            <div class="accordion-body">
+                              <p>
+                                You can cancel the booking yourself
+                                <strong>within the cancellation period</strong>
+                                stated on your booking by following these steps:
+                              </p>
+                              <ul>
+                                <li>
+                                  Click on your profile picture in the top right
+                                  hand corner of the screen.
+                                </li>
+                                <li>Go to the Bookings</li>
+                                <li>
+                                  Find the booking you want to cancel and select
+                                  <strong>"Apply for refund"</strong>
+                                </li>
+                                <li>
+                                  Select refund reason, quantity and then select
+                                  <strong>"Next"</strong>
+                                </li>
+                              </ul>
+
+                              <p>
+                                You will then receive an email confirming that
+                                your order has been cancelled.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Faq Modal -->
+
+    <!-- Booking Details Modal -->
+    <div
+      class="modal fade"
+      id="bookingDetails"
+      tabindex="-1"
+      aria-labelledby="bookingDetailsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="bookingDetails">Bookings</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body gray_bg">
+            <div class="container bg-white shadow-sm rounded-4 pb-3">
+              <h3 class="pt-3">Recent Bookings</h3>
+              <hr class="border-dark-subtle" />
+              <div class="row fw-semibold pt-1">
+                <div class="col-6">Hotel</div>
+                <div class="col-3">Status</div>
+                <div class="col-3">Details</div>
+              </div>
+              <hr class="border-dark-subtle my-2" />
+              <div class="row align-items-center b_details">
+                <div class="col-6"><span>Watergate Hotel</span></div>
+                <div class="col-3">
+                  <small class="bg-success text-white rounded-2 p-1"
+                    >Confirmed</small
+                  >
+                </div>
+                <div class="col-3">
+                  <small
+                    class="btn btn-outline-secondary rounded-2 px-2 py-1 text-wrap"
+                    >Details</small
+                  >
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="container bg-white shadow-sm rounded-4 pb-3">
+              <h3 class="pt-3">Previous Bookings</h3>
+              <hr class="border-dark-subtle" />
+              <div class="row fw-semibold pt-1">
+                <div class="col-6">Hotel</div>
+                <div class="col-3">Status</div>
+                <div class="col-3">Details</div>
+              </div>
+              <hr class="border-dark-subtle my-2" />
+              <div class="row align-items-center b_details text-center py-5">
+                <div class="col"><span>No Previous Bookings</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Booking Details Modal -->
+
+    <!-- !! Personal Info Modal -->
+    <div
+      class="modal fade"
+      id="personaInfo"
+      tabindex="-1"
+      aria-labelledby="personaInfoModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="personaInfo">
+              Personal information
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body gray_bg">
+            <div class="container bg-white shadow-sm rounded-4 mt-3 pt-3 pb-4">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <h2>User Profile</h2>
+                      <hr />
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <p class="fw-bold">Email:</p>
+                      </div>
+                      <div class="col-8">
+                        <p class="text-truncate">example@example.com</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <p class="fw-bold">Name:</p>
+                      </div>
+                      <div class="col-8">
+                        <p class="text-truncate">John</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <p class="fw-bold">Contact:</p>
+                      </div>
+                      <div class="col-8">
+                        <p>123-456-7890</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <p class="fw-bold">Address:</p>
+                      </div>
+                      <div class="col">
+                        <p class="text-truncate">123 Main St, City, Country</p>
+                      </div>
+                      <div class="col-2">
+                        <button type="button" class="btn btn-primary btn-sm">
+                          <i class="bi bi-pencil-square"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- !! End personal info Modal -->
+
+    <!-- Bottom-Bar -->
+    <footer class="fixed-bottom">
+      <div class="container-fluid bottom_bar border shadow">
+        <div class="container text-center">
+          <div class="row">
+            <div class="col bot_bar p-2">
+              <a href="index.html" class="text-decoration-none">
+                <div class="icon-container">
+                  <img src="./assets/icon/home-fill-0.svg" alt="Home" />
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+            <div class="col bot_bar p-2">
+              <a href="hotel.html" class="text-decoration-none">
+                <div class="icon-container">
+                  <img src="./assets/icon/building-fill-0.svg" alt="Hotels" />
+                  <span>Hotels</span>
+                </div>
+              </a>
+            </div>
+            <div class="col bot_bar p-2">
+              <a class="text-decoration-none">
+                <div class="icon-container b_active">
+                  <img
+                    src="./assets/icon/account-fill-1.svg"
+                    alt="Account"
+                    fill
+                  />
+                  <span>Account</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

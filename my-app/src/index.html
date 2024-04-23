@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>UwU</title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.js"
+    ></script>
+
+    <link rel="icon" type="image/x-icon" href="./assets/icon/LOGO.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,200,0,0"
+    />
+
+    <script type="module" src="./js/index.js"></script>
+
+    <meta name="theme-color" content="#31d53d" />
+  </head>
+  <body>
+    <!-- Top-bar -->
+    <div class="bg_header">
+      <nav class="fixed-top">
+        <div class="container-fluid top-bar">
+          <div class="container py-3">
+            <div class="row">
+              <div class="col-10">
+                <div
+                  class="search_box position-relative"
+                  data-bs-toggle="modal"
+                  data-bs-target="#searchModal"
+                >
+                  <img src="./assets/icon/search.svg" alt="Search Icon" />
+                  <input
+                    class="ps-2"
+                    type="search"
+                    placeholder="Search for location"
+                    aria-label="Search"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div
+                class="col-2 faq my-auto btn_faq"
+                data-bs-toggle="modal"
+                data-bs-target="#faqModal"
+              >
+                <img src="./assets/icon/faq-fill-white.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- End of Top-bar -->
+
+      <!-- Search Modal -->
+      <div
+        class="modal"
+        id="searchModal"
+        tabindex="-1"
+        aria-labelledby="searchModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content">
+            <div class="container-fluid">
+              <div class="container py-3">
+                <div class="row">
+                  <div class="col-10">
+                    <div
+                      class="position-relative search_box search_btn align-items-center"
+                    >
+                      <img
+                        src="./assets/icon/search-fill.svg"
+                        alt="Search Icon"
+                      />
+                      <input
+                        id="searchInput"
+                        class="ps-2"
+                        type="search"
+                        placeholder="Search for location"
+                        aria-label="Search"
+                      />
+                      <button class="btn sm_btn">
+                        <i class="bi bi-arrow-right"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="col-2 text-center my-auto">
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-body" id="searchResults"></div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Search Modal -->
+
+      <!-- Intro Logo -->
+      <br /><br /><br />
+      <div class="container intro-logo">
+        <div class="row">
+          <div class="col intro mx-3 my-2 rounded-4 d-flex shadow border">
+            <img
+              class="mx-auto d-block"
+              src="./assets/icon/UwU Logo.svg"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <!-- End of Intro Logo -->
+    </div>
+
+    <!-- Faq Modal -->
+    <div
+      class="modal fade"
+      id="faqModal"
+      aria-labelledby="faqModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header container">
+            <h1 class="modal-title fs-5" id="faqModalLabel">Help Center</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <section>
+              <div class="container">
+                <div class="row justify-content-md-center">
+                  <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+                    <h2 class="mb-4 display-5 text-center">
+                      Frequently Asked Questions
+                    </h2>
+                    <p class="text-secondary text-center lead fs-4">
+                      Welcome to our FAQ page, your one-stop resource for
+                      answers to commonly asked questions.
+                    </p>
+                    <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-8">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-11 col-xl-10">
+                      <div class="d-flex align-items-end mb-5">
+                        <i class="bi bi-people me-3 lh-1 display-5"></i>
+                        <h3 class="m-0">Popular topics</h3>
+                      </div>
+                    </div>
+                    <div class="col-11 col-xl-10">
+                      <div class="accordion accordion-flush" id="faqAccount">
+                        <div
+                          class="accordion-item bg-transparent border-top border-bottom py-3"
+                        >
+                          <h2 class="accordion-header" id="faqAccountHeading1">
+                            <button
+                              class="accordion-button collapsed bg-transparent fw-bold shadow-none link-primary"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#faqAccountCollapse1"
+                              aria-expanded="false"
+                              aria-controls="faqAccountCollapse1"
+                            >
+                              What is an account?
+                            </button>
+                          </h2>
+                          <div
+                            id="faqAccountCollapse1"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="faqAccountHeading1"
+                          >
+                            <div class="accordion-body">
+                              <p>
+                                An account is a personal or organizational
+                                record that allows you to access and manage
+                                various services, often requiring authentication
+                                through a <strong>email</strong> and
+                                <strong>password</strong>.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="accordion-item bg-transparent border-bottom py-3"
+                        >
+                          <h2 class="accordion-header" id="faqAccountHeading2">
+                            <button
+                              class="accordion-button collapsed bg-transparent fw-bold shadow-none link-primary"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#faqAccountCollapse2"
+                              aria-expanded="false"
+                              aria-controls="faqAccountCollapse2"
+                            >
+                              How do I create an account?
+                            </button>
+                          </h2>
+                          <div
+                            id="faqAccountCollapse2"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="faqAccountHeading2"
+                          >
+                            <div class="accordion-body">
+                              <p>
+                                To create an account, click the account button
+                                in the right corner and look for a
+                                <strong>"Login"</strong> or
+                                <strong>"Signup"</strong> button. Follow the
+                                instructions to enter your information and
+                                create a email and password.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="accordion-item bg-transparent border-bottom py-3"
+                        >
+                          <h2 class="accordion-header" id="faqAccountHeading3">
+                            <button
+                              class="accordion-button collapsed bg-transparent fw-bold shadow-none link-primary"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#faqAccountCollapse3"
+                              aria-expanded="false"
+                              aria-controls="faqAccountCollapse3"
+                            >
+                              What should I do if I forget my password?
+                            </button>
+                          </h2>
+                          <div
+                            id="faqAccountCollapse3"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="faqAccountHeading3"
+                          >
+                            <div class="accordion-body">
+                              <p>
+                                If you forget your password, most websites and
+                                services offer a
+                                <strong>"Forgot Password"</strong> or
+                                <strong>"Reset Password"</strong> option. Follow
+                                the steps to reset your password, often
+                                involving an email or SMS verification.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="accordion-item bg-transparent border-bottom py-3"
+                        >
+                          <h2 class="accordion-header" id="faqAccountHeading4">
+                            <button
+                              class="accordion-button collapsed bg-transparent fw-bold shadow-none link-primary"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#faqAccountCollapse4"
+                              aria-expanded="false"
+                              aria-controls="faqAccountCollapse4"
+                            >
+                              When will I receive my booking confirmation?
+                            </button>
+                          </h2>
+                          <div
+                            id="faqAccountCollapse4"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="faqAccountHeading4"
+                          >
+                            <div class="accordion-body">
+                              <p>
+                                For activities with instant confirmation: You
+                                will receive your
+                                <strong>booking confirmation email</strong>
+                                within 5 minutes of making your booking.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="accordion-item bg-transparent border-bottom py-3"
+                        >
+                          <h2 class="accordion-header" id="faqAccountHeading5">
+                            <button
+                              class="accordion-button collapsed bg-transparent fw-bold shadow-none link-primary"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#faqAccountCollapse5"
+                              aria-expanded="false"
+                              aria-controls="faqAccountCollapse5"
+                            >
+                              How can I cancel my booking?
+                            </button>
+                          </h2>
+                          <div
+                            id="faqAccountCollapse5"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="faqAccountHeading5"
+                          >
+                            <div class="accordion-body">
+                              <p>
+                                You can cancel the booking yourself
+                                <strong>within the cancellation period</strong>
+                                stated on your booking by following these steps:
+                              </p>
+                              <ul>
+                                <li>
+                                  Click on your profile picture in the top right
+                                  hand corner of the screen.
+                                </li>
+                                <li>Go to the Bookings</li>
+                                <li>
+                                  Find the booking you want to cancel and select
+                                  <strong>"Apply for refund"</strong>
+                                </li>
+                                <li>
+                                  Select refund reason, quantity and then select
+                                  <strong>"Next"</strong>
+                                </li>
+                              </ul>
+
+                              <p>
+                                You will then receive an email confirming that
+                                your order has been cancelled.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Faq Modal -->
+
+    <!-- Featured Destinations -->
+    <div class="container mt-3 mb-1">
+      <h4 class="py-3">Featured Destinations</h4>
+      <div class="scrolling-wrapper py-1 text-center">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <img
+            src="./assets/icon/near-me-svgrepo-com.svg"
+            class="rounded-circle c_items"
+            alt=""
+          />
+          <p class="p-1">Nearby</p>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+          <img
+            src="./assets/imgs/Butuan.jpg"
+            class="rounded-circle c_items"
+            alt=""
+            data-bs-toggle="modal"
+            data-bs-target="#butuanModal1"
+          />
+          <p class="p-1">Butuan</p>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+          <img
+            src="./assets/imgs/Surigao.jpg"
+            class="rounded-circle c_items"
+            alt=""
+          />
+          <p class="p-1">Surigao</p>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+          <img
+            src="./assets/imgs/Cabadbaran.jpg"
+            class="rounded-circle c_items"
+            alt=""
+          />
+          <p class="p-1">Cabadbaran</p>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <img
+            src="./assets/imgs/Soon.png"
+            class="rounded-circle c_items"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <!-- End of Featured Destinations -->
+
+    <!-- Butuan Modal for Search -->
+    <div
+      class="modal"
+      id="butuanModal"
+      tabindex="-1"
+      aria-labelledby="butuanModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="container-fluid">
+            <div class="container py-3">
+              <div class="row">
+                <div class="col-10">
+                  <div
+                    class="position-relative search_box search_btn align-items-center"
+                  >
+                    <img
+                      src="./assets/icon/search-fill.svg"
+                      alt="Search Icon"
+                    />
+                    <input
+                      id="searchInput"
+                      class="ps-2"
+                      type="search"
+                      aria-label="Search"
+                      value="Butuan"
+                      readonly
+                    />
+                  </div>
+                </div>
+
+                <div class="col-2 text-center my-auto">
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-toggle="modal"
+                    data-bs-target="#searchModal"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="ih_item">
+              <div class="col col_hotel mx-auto">
+                <a href="hotel_info.html" class="text-decoration-none">
+                  <div class="card shadow-sm">
+                    <img
+                      src="./assets/imgs/Butuan_Watergate.jpg"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <p class="card-text">
+                        <i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star-fill"></i
+                        ><i class="bi bi-star"></i> 4.3
+                        <span>(703)</span>
+                      </p>
+                      <h5>Watergate Hotel</h5>
+                      <small>Jose Rosales Ave, Butuan City</small>
+                      <h4 class="pt-2"><b>₱3,096</b></h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col col_hotel mx-auto pt-4">
+                <div class="card shadow-sm">
+                  <img
+                    src="./assets/imgs/Butuan_Hotel Oazis.jpeg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star"></i> 4.2
+                      <span>(611)</span>
+                    </p>
+                    <h5>Hotel Oazis</h5>
+                    <small>Butuan City</small>
+                    <h4 class="pt-2"><b>₱2,950</b></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col col_hotel mx-auto pt-4">
+                <div class="card shadow-sm">
+                  <img
+                    src="./assets/imgs/Butuan_Red Palm.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star"></i> 4.1 <span>(115)</span>
+                    </p>
+                    <h5>The Red Palm</h5>
+                    <small>Villa Kananga Rd, Butuan City</small>
+                    <h4 class="pt-2"><b>₱2,020</b></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col col_hotel mx-auto pt-4">
+                <div class="card shadow-sm">
+                  <img
+                    src="./assets/imgs/Butuan_Go Hotels.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star"></i> 4.0 <span>(960)</span>
+                    </p>
+                    <h5>Go Hotels</h5>
+                    <small>J C Aquino Ave, Butuan City</small>
+                    <h4 class="pt-2"><b>₱1,618</b></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col col_hotel mx-auto py-4">
+                <div class="card shadow-sm">
+                  <img
+                    src="./assets/imgs/Butuan_Flor-Al.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-half"></i
+                      ><i class="bi bi-star"></i> 3.5 <span>(695)</span>
+                    </p>
+                    <h5>Flor-Al Mansion</h5>
+                    <small>J C Aquino Ave, Butuan City</small>
+                    <h4 class="pt-2"><b>₱336</b></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Butuan Modal for Search -->
+
+    <!-- Butuan Modal for Recommended -->
+    <div
+      class="modal"
+      id="butuanModal1"
+      tabindex="-1"
+      aria-labelledby="butuanModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="container-fluid">
+            <div class="container py-3">
+              <div class="row">
+                <div class="col-10">
+                  <div
+                    class="position-relative search_box search_btn align-items-center"
+                  >
+                    <img
+                      src="./assets/icon/search-fill.svg"
+                      alt="Search Icon"
+                    />
+                    <input
+                      id="searchInput"
+                      class="ps-2"
+                      type="search"
+                      aria-label="Search"
+                      value="Butuan"
+                      readonly
+                    />
+                  </div>
+                </div>
+
+                <div class="col-2 text-center my-auto">
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="ih_item">
+              <div
+                class="col col_hotel mx-auto"
+                data-bs-toggle="modal"
+                data-bs-target="#Butuan_Watergate"
+              >
+                <div class="card shadow-sm">
+                  <img
+                    src="./assets/imgs/Butuan_Watergate.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star"></i> 4.3
+                      <span>(703)</span>
+                    </p>
+                    <h5>Watergate Hotel</h5>
+                    <small>Jose Rosales Ave, Butuan City</small>
+                    <h4 class="pt-2"><b>₱3,096</b></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col col_hotel mx-auto pt-4">
+                <div class="card shadow-sm">
+                  <img
+                    src="./assets/imgs/Butuan_Hotel Oazis.jpeg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star"></i> 4.2
+                      <span>(611)</span>
+                    </p>
+                    <h5>Hotel Oazis</h5>
+                    <small>Butuan City</small>
+                    <h4 class="pt-2"><b>₱2,950</b></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col col_hotel mx-auto pt-4">
+                <div class="card shadow-sm">
+                  <img
+                    src="./assets/imgs/Butuan_Red Palm.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star"></i> 4.1 <span>(115)</span>
+                    </p>
+                    <h5>The Red Palm</h5>
+                    <small>Villa Kananga Rd, Butuan City</small>
+                    <h4 class="pt-2"><b>₱2,020</b></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col col_hotel mx-auto pt-4">
+                <div class="card shadow-sm">
+                  <img
+                    src="./assets/imgs/Butuan_Go Hotels.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star"></i> 4.0 <span>(960)</span>
+                    </p>
+                    <h5>Go Hotels</h5>
+                    <small>J C Aquino Ave, Butuan City</small>
+                    <h4 class="pt-2"><b>₱1,618</b></h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col col_hotel mx-auto py-4">
+                <div class="card shadow-sm">
+                  <img
+                    src="./assets/imgs/Butuan_Flor-Al.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <p class="card-text">
+                      <i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-fill"></i
+                      ><i class="bi bi-star-half"></i
+                      ><i class="bi bi-star"></i> 3.5 <span>(695)</span>
+                    </p>
+                    <h5>Flor-Al Mansion</h5>
+                    <small>J C Aquino Ave, Butuan City</small>
+                    <h4 class="pt-2"><b>₱336</b></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Butuan Modal for Recommended -->
+
+    <!-- End of Search Modal -->
+
+    <!-- Recommended -->
+    <div class="container mb-1">
+      <h4 class="py-3">Recommended</h4>
+      <div class="scrolling-wrapper">
+        <div class="col pe-3">
+          <a href="hotel_info.html" class="text-decoration-none">
+            <div class="card" style="width: 18rem">
+              <img
+                src="./assets/imgs/Butuan_Watergate.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                  ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                  ><i class="bi bi-star"></i> 4.3
+                  <span>(703)</span>
+                </p>
+                <h5>Watergate Hotel</h5>
+                <small>Jose Rosales Ave, Butuan City</small>
+                <h4 class="pt-2"><b>₱3,096</b></h4>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col pe-3">
+          <div class="card" style="width: 18rem">
+            <img
+              src="./assets/imgs/Butuan_Hotel Oazis.jpeg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <p class="card-text">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star"></i> 4.2
+                <span>(611)</span>
+              </p>
+              <h5>Hotel Oazis</h5>
+              <small>Butuan City</small>
+              <h4 class="pt-2"><b>₱2,950</b></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col pe-3">
+          <div class="card" style="width: 18rem">
+            <img
+              src="./assets/imgs/Surigao_Hotel Tavern.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <p class="card-text">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star"></i> 4.3
+                <span>(784)</span>
+              </p>
+              <h5>Hotel Tavern Surigao</h5>
+              <small>Borromeo St, Surigao City</small>
+              <h4 class="pt-2"><b>₱3,232</b></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="width: 18rem">
+            <img
+              src="./assets/imgs/Cabadbaran_LaDolceVita.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <p class="card-text">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+                ><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i
+                ><i class="bi bi-star"></i> 3.9
+                <span>(60)</span>
+              </p>
+              <h5 class="d-inline-block text-truncate">
+                LaDolceVita Inland Resort
+              </h5>
+              <small>4GGP+896, Cabadbaran City</small>
+              <h4 class="pt-2"><b>₱1,660</b></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Recommended -->
+
+    <!-- Weekend Sale -->
+    <div class="container my-3">
+      <h5 class="py-3">Weekend Sale🎉</h5>
+      <img
+        class="rounded-4 promo"
+        src="./assets/imgs/WeekendPromo.png"
+        alt=""
+      />
+    </div>
+    <!-- End of Weekend Sale -->
+
+    <br /><br /><br />
+
+    <!-- Bottom-Bar -->
+    <footer class="fixed-bottom">
+      <div class="container-fluid bottom_bar border shadow">
+        <div class="container text-center">
+          <div class="row">
+            <div class="col bot_bar p-2">
+              <a class="text-decoration-none">
+                <div class="icon-container b_active">
+                  <img src="./assets/icon/home-fill-1.svg" alt="Home" />
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+            <div class="col bot_bar p-2">
+              <a href="hotel.html" class="text-decoration-none">
+                <div class="icon-container">
+                  <img src="./assets/icon/building-fill-0.svg" alt="Hotels" />
+                  <span>Hotels</span>
+                </div>
+              </a>
+            </div>
+            <div class="col bot_bar p-2">
+              <a href="account.html" class="text-decoration-none">
+                <div class="icon-container">
+                  <img
+                    src="./assets/icon/account-fill-0.svg"
+                    alt="Account"
+                    fill
+                  />
+                  <span>Account</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
