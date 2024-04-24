@@ -37,12 +37,12 @@ async function getDeluxeHotels() {
             <p class="card-text">
               <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
               ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-              ><i class="bi bi-star"></i> 4.1
-              <span>(320)</span>
+              ><i class="bi bi-star"></i> ${element.hotel_rate}
+              <span>(${element.no_reviews})</span>
             </p>
             <h5>${element.hotel_name}</h5>
             <small>${element.hotel_city}</small>
-            <h4 class="pt-2"><b>₱2,596</b></h4>
+            <h4 class="pt-2"><b>₱${element.price_rate}</b></h4>
           </div>
         </div>`;
 
