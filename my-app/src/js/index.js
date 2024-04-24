@@ -1,4 +1,4 @@
-import { supabase, bootstrap, searchModal } from "./main";
+import { supabase, searchModal } from "./main";
 
 // Import Images
 import fq_black from "../assets/icon/faq-fill-black.svg";

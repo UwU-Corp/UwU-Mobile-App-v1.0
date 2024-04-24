@@ -16,8 +16,8 @@ import { createClient } from "@supabase/supabase-js";
 
 // Create a single supabase client for interacting with your database
 const supabase = createClient(
-  "https://niuvmcheeiwgcfqcltch.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pdXZtY2hlZWl3Z2NmcWNsdGNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTEyODUxMTksImV4cCI6MjAyNjg2MTExOX0.gqod-aFP7kmHFrYqZfYqHnddxklfH5Dd-wh-pBNIYYM"
+  "https://alzkjjjbtyariubvcwcn.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsemtqampidHlhcml1YnZjd2NuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM5MzY4MDcsImV4cCI6MjAyOTUxMjgwN30.b7nqneAN1DXhQjilH1Xs5IhAZeVN1CjtYwfRzxZ87h8"
 );
 
 //Search functionality
@@ -28,4 +28,4 @@ searchModal.addEventListener("shown.bs.modal", function () {
   input.focus();
 });
 
-export { supabase, bootstrap, searchModal };
+export { supabase, searchModal };

@@ -157,10 +157,14 @@ body {
 .scrolling-wrapper {
   display: flex;
   overflow-x: auto;
-  gap: 10px;
+  gap: 25px;
 }
 .scrolling-wrapper::-webkit-scrollbar {
   display: none;
+}
+
+.col.col_hotel {
+  flex: none !important;
 }
 
 .card-img-top {
@@ -179,10 +183,6 @@ body {
 
 .card-body span {
   color: #999;
-}
-
-.col.col_hotel {
-  flex: none !important;
 }
 
 .acc_bg {
