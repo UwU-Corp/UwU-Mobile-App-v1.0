@@ -17,13 +17,13 @@ async function getDeluxeHotels() {
   let { data: hotel, error } = await supabase
     .from("hotel")
     .select("*")
-    .eq("hotel_type", "Deluxe");
+    .eq("hotel_type", "Deluxe")
+    .order("id", { ascending: true });
 
   let deluxe = document.getElementById("deluxe");
   deluxe.classList.add("scrolling-wrapper");
 
   hotel.forEach((element) => {
-    console.log(element);
     let hotelDiv = document.createElement("div");
     hotelDiv.classList.add("col", "col_hotel");
     hotelDiv.dataset.id = element.id;
@@ -41,8 +41,8 @@ async function getDeluxeHotels() {
               <span>(${element.no_reviews})</span>
             </p>
             <h5>${element.hotel_name}</h5>
-            <small>${element.hotel_city}</small>
-            <h4 class="pt-2"><b>₱${element.price_rate}</b></h4>
+            <small>${element.hotel_location}, ${element.hotel_city}</small>
+            <h4 class="pt-2"><b>₱${element.price_range}</b></h4>
           </div>
         </div>`;
 

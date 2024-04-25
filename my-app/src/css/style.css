@@ -157,7 +157,7 @@ body {
 .scrolling-wrapper {
   display: flex;
   overflow-x: auto;
-  gap: 25px;
+  gap: 10px;
 }
 .scrolling-wrapper::-webkit-scrollbar {
   display: none;
@@ -332,6 +332,10 @@ body {
 
 .a_textcolor {
   color: #212529;
+}
+
+.settings {
+  font-size: 25px;
 }
 
 /* ==== */

@@ -41,16 +41,28 @@
       <br /><br />
       <!-- Admin Profile -->
       <div class="container">
-        <div class="row">
-          <div class="col-md-2 col-3">
+        <div class="d-flex align-items-center">
+          <div class="">
             <img
               src="./assets/imgs/Account.png"
               class="rounded-circle acc_img"
               alt=""
             />
           </div>
-          <div class="col-md-10 col-9 my-auto">
-            <h2 class="fw-bold text-white">Admin</h2>
+          <div class="px-3">
+            <h2 class="mb-0 fw-bold text-white">Admin</h2>
+          </div>
+          <div class="ms-auto p-2 text-white dropdown">
+            <span
+              class="settings"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-gear-fill"></i>
+            </span>
+            <ul class="dropdown-menu dropdown-menu-end py-3">
+              <li><a class="dropdown-item" href="account.html">Logout</a></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -91,6 +103,26 @@
     <div class="container-fluid mt-3">
       <div class="container bg-white shadow-sm rounded-4">
         <div class="container pt-4 pb-4">
+          <div class="row" data-bs-toggle="modal" data-bs-target="#usersModal">
+            <div class="col acc_icon">
+              <h5>
+                <i class="bi bi-people pe-3"></i> Users<i
+                  class="bi bi-chevron-right float-end"
+                ></i>
+              </h5>
+            </div>
+          </div>
+          <hr class="border-dark-subtle" />
+          <div class="row" data-bs-toggle="modal" data-bs-target="#hotels">
+            <div class="col acc_icon">
+              <h5>
+                <i class="bi bi-buildings pe-3"></i> Hotels<i
+                  class="bi bi-chevron-right float-end"
+                ></i>
+              </h5>
+            </div>
+          </div>
+          <hr class="border-dark-subtle" />
           <div
             class="row"
             data-bs-toggle="modal"
@@ -104,32 +136,6 @@
               </h5>
             </div>
           </div>
-          <hr class="border-dark-subtle" />
-          <div class="row" data-bs-toggle="modal" data-bs-target="#usersModal">
-            <div class="col acc_icon">
-              <h5>
-                <i class="bi bi-people pe-3"></i> Users<i
-                  class="bi bi-chevron-right float-end"
-                ></i>
-              </h5>
-            </div>
-          </div>
-          <hr class="border-dark-subtle" />
-          <a href="account.html" class="text-decoration-none a_textcolor">
-            <div
-              class="row"
-              data-bs-toggle="modal"
-              data-bs-target="#LoginModal"
-            >
-              <div class="col acc_icon">
-                <h5>
-                  <i class="bi bi-box-arrow-right pe-3"></i> Logout<i
-                    class="bi bi-chevron-right float-end"
-                  ></i>
-                </h5>
-              </div>
-            </div>
-          </a>
         </div>
       </div>
       <br /><br />
