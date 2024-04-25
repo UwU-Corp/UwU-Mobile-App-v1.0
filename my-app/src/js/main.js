@@ -20,12 +20,17 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsemtqampidHlhcml1YnZjd2NuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM5MzY4MDcsImV4cCI6MjAyOTUxMjgwN30.b7nqneAN1DXhQjilH1Xs5IhAZeVN1CjtYwfRzxZ87h8"
 );
 
-//Search functionality
+// Search functionality
 const searchModal = document.getElementById("searchModal");
 
-searchModal.addEventListener("shown.bs.modal", function () {
-  var input = document.getElementById("searchInput");
-  input.focus();
-});
+if (searchModal) {
+  // Check if searchModal exists
+  searchModal.addEventListener("shown.bs.modal", function () {
+    var input = document.getElementById("searchInput");
+    if (input) {
+      input.focus();
+    }
+  });
+}
 
 export { supabase, searchModal };

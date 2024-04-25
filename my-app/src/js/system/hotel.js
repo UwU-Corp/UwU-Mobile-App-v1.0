@@ -13,6 +13,7 @@ getDeluxeHotels();
 const modalSearch = document.getElementById("searchModal");
 modalSearch.onclick = searchModal;
 
+// Get Deluxe Hotels in the database and display them
 async function getDeluxeHotels() {
   let { data: hotel, error } = await supabase
     .from("hotel")
