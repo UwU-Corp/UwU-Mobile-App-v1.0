@@ -1,7 +1,7 @@
 function setRouter() {
   // Check the current page
   switch (window.location.pathname) {
-    // If the current page is login or signup
+    // If you are logged in
     case "/login.html":
     case "/signup.html":
       // If the user is logged in
@@ -21,7 +21,7 @@ function setRouter() {
       }
       break;
 
-    // If the current page is admin
+    // If you are not logged in
     case "/admin.html":
       // If the user is not logged in or not an admin, redirect them to the account page
       if (
@@ -32,28 +32,27 @@ function setRouter() {
       }
       break;
 
-    // If the current page is hotel management admin
-    case "/hadmin.html":
-      // If the user is not logged in or not a hadmin, redirect them to the account page
-      if (
-        !localStorage.getItem("access_token") ||
-        localStorage.getItem("role") != "hadmin"
-      ) {
-        window.location.pathname = "/account.html";
-      }
-      break;
+    // If you are not logged in
+    // case "/hadmin.html":
+    // If the user is not logged in or not a hadmin, redirect them to the account page
+    // if (
+    //   !localStorage.getItem("access_token") ||
+    //   localStorage.getItem("role") != "hadmin"
+    // ) {
+    //   window.location.pathname = "/account.html";
+    // }
+    // break;
 
-    // For all other pages
     default:
       // If the user is an admin, redirect them to the admin page
       if (localStorage.getItem("role") == "admin") {
         window.location.pathname = "/admin.html";
       }
-      // If the user is a hadmin, redirect them to the hadmin page
-      else if (localStorage.getItem("role") == "hadmin") {
-        window.location.pathname = "/hadmin.html";
-      }
-      break;
+    // If the user is a hadmin, redirect them to the hadmin page
+    // else if (localStorage.getItem("role") == "hadmin") {
+    //   window.location.pathname = "/hadmin.html";
+    // }
+    // break;
   }
 }
 
