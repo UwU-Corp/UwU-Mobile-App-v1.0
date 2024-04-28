@@ -32,7 +32,7 @@ function setRouter() {
       }
       break;
 
-    // If the current page is hadmin
+    // If the current page is hotel management admin
     case "/hadmin.html":
       // If the user is not logged in or not a hadmin, redirect them to the account page
       if (
