@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>UwU</title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.js"
+    ></script>
+
+    <link rel="icon" type="image/x-icon" href="./assets/icon/LOGO.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <script type="module" src="./js/auth/login.js"></script>
+
+    <meta name="theme-color" content="#31d53d" />
+  </head>
+  <body>
+    <div class="container btn_hotel">
+      <button
+        type="button"
+        class="btn-close btn_bg"
+        aria-label="Close"
+        onclick="goBack()"
+      ></button>
+    </div>
+    <div class="">
+      <!-- !! lnotification -->
+      <br /><br />
+      <div class="alert alert-success d-none" role="alert"></div>
+      <div class="alert alert-danger d-none" role="alert"></div>
+      <!-- !! end of notification -->
+
+      <div class="container position-absolute top-50 start-50 translate-middle">
+        <div class="row">
+          <div class="col text-center">
+            <img src="./assets/icon/UwU Logo.svg" width="250px" />
+          </div>
+        </div>
+        <div class="row">
+          <!-- !!start of col 1 -->
+          <div class="col"></div>
+          <!-- !!end of col 1 -->
+
+          <!-- !!Start of col 2 -->
+          <div class="col-9">
+            <!-- !! form start -->
+            <form id="form_login">
+              <br />
+
+              <div class="form-floating mb-3">
+                <!-- !! email login -->
+                <input
+                  name="email"
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email"
+                  required
+                />
+                <label for="email">Email</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <!-- !! password login -->
+                <input
+                  name="password"
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+                <label for="password">Password</label>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="login" class="btn btn-1 btn-lg">
+                  Login
+
+                  <!--!!FIXME: this is temporary  -->
+                  <!-- <a href="admin.html" class="text-decoration-none text-white" >Login</a> -->
+                  <!--!! End of Fixme -->
+                </button>
+                <hr />
+              </div>
+              <br />
+              <div class="text-center">
+                <p>Not a member?</p>
+                <a href="signup.html" class="text-decoration-none"
+                  >Create an account</a
+                >
+              </div>
+            </form>
+            <!-- !! form end-->
+          </div>
+
+          <!-- !!end of col 2 -->
+
+          <!-- !! start of col 3 -->
+          <div class="col"></div>
+
+          <!-- !!end of col 3 -->
+        </div>
+      </div>
+    </div>
+    <script>
+      //!! for button back
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>

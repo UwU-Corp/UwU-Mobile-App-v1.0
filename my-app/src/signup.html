@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>UwU</title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.js"
+    ></script>
+
+    <link rel="icon" type="image/x-icon" href="./assets/icon/LOGO.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <script type="module" src="./js/auth/signup.js"></script>
+
+    <meta name="theme-color" content="#31d53d" />
+  </head>
+  <body>
+    <div class="container btn_hotel">
+      <button
+        type="button"
+        class="btn-close btn_bg"
+        aria-label="Close"
+        onclick="goBack()"
+      ></button>
+    </div>
+    <div class="">
+      <!-- !! snotification -->
+      <br />
+      <br />
+      <div
+        class="alert alert-success signup_notif_success d-none"
+        role="alert"
+      ></div>
+      <div
+        class="alert alert-danger signup_notif_error d-none"
+        role="alert"
+      ></div>
+      <!-- !! end of notification -->
+
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <img src="./assets/icon/UwU Logo.svg" width="250px" />
+          </div>
+        </div>
+        <div class="row">
+          <!-- *Start of Col 1 -->
+          <div class="col"></div>
+          <!-- *End of Col 1 -->
+
+          <!-- *Start of Col 2 -->
+          <div class="col-9 text-center pl-5">
+            <!-- !! form start of signup -->
+            <form id="form_register">
+              <br />
+
+              <!-- !! email field -->
+              <div class="form-floating mb-3">
+                <input
+                  name="email"
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email"
+                  required
+                />
+                <label for="email">Email</label>
+              </div>
+
+              <!-- !! password field -->
+              <div class="form-floating mb-3">
+                <input
+                  name="password"
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+                <label for="password">Password</label>
+              </div>
+
+              <!-- !! password confirmation field -->
+              <div class="form-floating mb-3">
+                <input
+                  name="password_confirmation"
+                  type="password"
+                  class="form-control"
+                  id="password_confirmation"
+                  placeholder="Password confirmation"
+                  required
+                />
+                <label for="password_confirmation">Password confirmation</label>
+              </div>
+
+              <!-- !! first name field -->
+              <div class="col">
+                <div class="form-floating mb-3 text-truncate">
+                  <input
+                    name="first_name"
+                    type="text"
+                    class="form-control"
+                    id="first_name"
+                    placeholder="First Name"
+                    required
+                  />
+                  <label class="d-inline-block" for="first_name"
+                    >First Name</label
+                  >
+                </div>
+              </div>
+
+              <!-- !! last name field -->
+              <div class="col">
+                <div class="form-floating mb-3 text-truncate">
+                  <input
+                    name="last_name"
+                    type="text"
+                    class="form-control"
+                    id="last_name"
+                    placeholder="Last Name"
+                    required
+                  />
+                  <label for="last_name">Last Name</label>
+                </div>
+              </div>
+
+              <!-- !! contact field -->
+              <div class="col">
+                <div class="form-floating mb-3 text-truncate">
+                  <input
+                    name="contact_num"
+                    type="number"
+                    class="form-control"
+                    id="contact_num"
+                    placeholder="Contact"
+                    required
+                  />
+                  <label for="contact_num">Contact</label>
+                </div>
+              </div>
+
+              <!-- !! address field -->
+              <div class="col">
+                <textarea
+                  name="address"
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  placeholder="Address"
+                  rows="4"
+                  required
+                ></textarea>
+                <div class="form-floating mb-3 text-truncate">
+                  <label for="address">Address</label>
+                </div>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-1 btn-lg">Sign up</button>
+              </div>
+              <hr />
+              <br />
+              <p class="fs-6">
+                Already have an account?
+                <a href="login.html" class="text-decoration-none">Login</a>
+              </p>
+            </form>
+            <!-- !! form end -->
+          </div>
+          <!-- *End of Col 2 -->
+
+          <!-- *Start of Col 3 -->
+          <div class="col"></div>
+          <!-- *End of Col 3 -->
+        </div>
+        <!--* End of Row -->
+      </div>
+      <!-- *End of Container -->
+      <br /><br />
+    </div>
+    <script>
+      //!! for button back
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>

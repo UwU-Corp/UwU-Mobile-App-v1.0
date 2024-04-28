@@ -6,13 +6,13 @@ import * as bootstrap from "bootstrap";
 // import "bootstrap/dist/js/bootstrap.bundle";
 
 // Import Router
-// import { setRouter } from "./router/router.js";
+import { setRouter } from "./router/router.js";
 
 // Import supabase
 import { createClient } from "@supabase/supabase-js";
 
 // Set Router
-// setRouter();
+setRouter();
 
 // Create a single supabase client for interacting with your database
 const supabase = createClient(
