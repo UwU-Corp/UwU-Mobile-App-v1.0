@@ -27,9 +27,8 @@ const hotelImageUrl =
 const roomImageUrl =
   "https://alzkjjjbtyariubvcwcn.supabase.co/storage/v1/object/public/rooms/public/";
 
-// Search functionality
+// Function to open the search modal and focus on the search input
 const searchModal = document.getElementById("searchModal");
-
 if (searchModal) {
   // Check if searchModal exists
   searchModal.addEventListener("shown.bs.modal", function () {
@@ -68,10 +67,31 @@ function generateStarRating(rating) {
   return stars;
 }
 
+// Function to logout the user
+async function doLogout(event) {
+  // If the event argument is not undefined, prevent the default action of the anchor tag
+  if (event !== undefined) {
+    event.preventDefault();
+  }
+
+  // Supabase Logout
+  let { error } = await supabase.auth.signOut();
+
+  if (error == null) {
+    // Clear local Storage
+    localStorage.clear();
+    // Redirect to account page
+    window.location.pathname = "/account.html";
+  } else {
+    console.log("Error logging out: ", error.message);
+  }
+}
+
 export {
   supabase,
   hotelImageUrl,
   roomImageUrl,
   searchModal,
   generateStarRating,
+  doLogout,
 };

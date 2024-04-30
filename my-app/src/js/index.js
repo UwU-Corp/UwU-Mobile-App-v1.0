@@ -9,12 +9,8 @@ import {
 import fq_black from "../assets/icon/faq-fill-black.svg";
 import fq_white from "../assets/icon/faq-fill-white.svg";
 
-// Call the function to load recommended hotels
-// getRecommendedHotels();
-
-// Modal for Search
+// Getting the search modal element and setting its onclick event to searchModal function
 const modalSearch = document.getElementById("searchModal");
-
 modalSearch.onclick = searchModal;
 
 // Top-bar change color on scroll
@@ -69,20 +65,28 @@ async function getRecommendedHotels() {
   // Fetching all hotels from the database
   let { data: hotel, error } = await supabase
     .from("hotel")
-    .select("*")
-    .order("id", { ascending: true });
+    .select(
+      "id, hotel_rate, hotel_name, hotel_location, hotel_city, price_range, no_reviews"
+    );
 
-  for (let hotel_image of hotel) {
-    let { data: images, error } = await supabase
-      .from("hotel_images")
-      .select("image_path")
-      .eq("hotel_id", hotel_image.id);
-
-    if (error == null) {
-      console.log(images);
-      hotel_image.images = images.map((image) => image.image_path);
-    }
+  if (error) {
+    console.log("Error fetching hotels: ", error);
+    return;
   }
+
+  // Fetch images for all hotels in parallel
+  await Promise.all(
+    hotel.map(async (hotel_image) => {
+      let { data: images, error } = await supabase
+        .from("hotel_images")
+        .select("image_path")
+        .eq("hotel_id", hotel_image.id);
+
+      if (error == null) {
+        hotel_image.images = images.map((image) => image.image_path);
+      }
+    })
+  );
 
   // Remove the placeholder cards
   let placeholderCards = document.querySelectorAll(".placeholder-glow");
