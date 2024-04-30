@@ -16,16 +16,63 @@ modalSearch.onclick = searchModal;
 
 // Function to get Deluxe hotels from the database and display them
 async function getDeluxeHotels() {
-  // Fetching Deluxe hotels from the database
-  let { data: hotel, error } = await supabase
-    .from("hotel")
-    .select("*")
-    .eq("hotel_type", "Deluxe")
-    .order("id", { ascending: true });
-
   // Getting the deluxe element and adding the class 'scrolling-wrapper'
   let deluxe = document.getElementById("deluxe");
   deluxe.classList.add("scrolling-wrapper");
+
+  // Create placeholder cards and add them to the recommended element
+  for (let i = 0; i < 5; i++) {
+    let placeholderCard = document.createElement("div");
+    placeholderCard.className = "col col_hotel placeholder-glow";
+    placeholderCard.innerHTML = `
+    <a href="#" class="card-link">
+      <div class="card" style="width: 18rem">
+        <div class="card-img-top placeholder"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <span class="placeholder col-5"></span>
+            <span class="placeholder col-2"></span>
+          </p>
+          <h5 class="placeholder col-6"></h5>
+          <small class="placeholder col-9 bg-dark"></small>
+          <h4 class="mt-2 placeholder col-7 placeholder-lg"></h4>
+        </div>
+      </div>
+    </a>`;
+    deluxe.appendChild(placeholderCard);
+  }
+
+  // Fetching Deluxe hotels from the database
+  let { data: hotel, error } = await supabase
+    .from("hotel")
+    .select(
+      "id, hotel_rate, hotel_name, hotel_location, hotel_city, price_range, no_reviews"
+    )
+    .eq("hotel_type", "Deluxe")
+    .order("id", { ascending: true });
+
+  if (error) {
+    console.log("Error fetching hotels: ", error);
+    return;
+  }
+
+  // Fetch images for all hotels in parallel
+  await Promise.all(
+    hotel.map(async (hotel_image) => {
+      let { data: images, error } = await supabase
+        .from("hotel_images")
+        .select("image_path")
+        .eq("hotel_id", hotel_image.id);
+
+      if (error == null) {
+        hotel_image.images = images.map((image) => image.image_path);
+      }
+    })
+  );
+
+  // Remove the placeholder cards
+  let placeholderCards = document.querySelectorAll(".placeholder-glow");
+  placeholderCards.forEach((card) => card.remove());
 
   // Looping through each hotel and creating a div element for it
   hotel.forEach((element) => {
@@ -41,7 +88,7 @@ async function getDeluxeHotels() {
       <a href="/hotel_info.html?id=${element.id}" class="card-link">
         <div class="card" style="width: 18rem">
           <img src="${
-            hotelImageUrl + element.hotel_imagepath
+            hotelImageUrl + element.images[0]
           }" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">
@@ -62,16 +109,63 @@ async function getDeluxeHotels() {
 
 // Function to get Standard hotels from the database and display them
 async function getStandardHotels() {
-  // Fetching Standard hotels from the database
-  let { data: hotel, error } = await supabase
-    .from("hotel")
-    .select("*")
-    .eq("hotel_type", "Standard")
-    .order("id", { ascending: true });
-
   // Getting the standard element and adding the class 'scrolling-wrapper'
   let standard = document.getElementById("standard");
   standard.classList.add("scrolling-wrapper");
+
+  // Create placeholder cards and add them to the recommended element
+  for (let i = 0; i < 5; i++) {
+    let placeholderCard = document.createElement("div");
+    placeholderCard.className = "col col_hotel placeholder-glow";
+    placeholderCard.innerHTML = `
+    <a href="#" class="card-link">
+      <div class="card" style="width: 18rem">
+        <div class="card-img-top placeholder"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <span class="placeholder col-5"></span>
+            <span class="placeholder col-2"></span>
+          </p>
+          <h5 class="placeholder col-6"></h5>
+          <small class="placeholder col-9 bg-dark"></small>
+          <h4 class="mt-2 placeholder col-7 placeholder-lg"></h4>
+        </div>
+      </div>
+    </a>`;
+    standard.appendChild(placeholderCard);
+  }
+
+  // Fetching Standard hotels from the database
+  let { data: hotel, error } = await supabase
+    .from("hotel")
+    .select(
+      "id, hotel_rate, hotel_name, hotel_location, hotel_city, price_range, no_reviews"
+    )
+    .eq("hotel_type", "Standard")
+    .order("id", { ascending: true });
+
+  if (error) {
+    console.log("Error fetching hotels: ", error);
+    return;
+  }
+
+  // Fetch images for all hotels in parallel
+  await Promise.all(
+    hotel.map(async (hotel_image) => {
+      let { data: images, error } = await supabase
+        .from("hotel_images")
+        .select("image_path")
+        .eq("hotel_id", hotel_image.id);
+
+      if (error == null) {
+        hotel_image.images = images.map((image) => image.image_path);
+      }
+    })
+  );
+
+  // Remove the placeholder cards
+  let placeholderCards = document.querySelectorAll(".placeholder-glow");
+  placeholderCards.forEach((card) => card.remove());
 
   // Looping through each hotel and creating a div element for it
   hotel.forEach((element) => {
@@ -87,7 +181,7 @@ async function getStandardHotels() {
       <a href="/hotel_info.html?id=${element.id}" class="card-link">
         <div class="card" style="width: 18rem">
           <img src="${
-            hotelImageUrl + element.hotel_imagepath
+            hotelImageUrl + element.images[0]
           }" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">
@@ -108,16 +202,63 @@ async function getStandardHotels() {
 
 // Function to get Budget hotels from the database and display them
 async function getBudgetHotels() {
-  // Fetching Budget hotels from the database
-  let { data: hotel, error } = await supabase
-    .from("hotel")
-    .select("*")
-    .eq("hotel_type", "Budget")
-    .order("id", { ascending: true });
-
   // Getting the budget element and adding the class 'scrolling-wrapper'
   let budget = document.getElementById("budget");
   budget.classList.add("scrolling-wrapper");
+
+  // Create placeholder cards and add them to the recommended element
+  for (let i = 0; i < 5; i++) {
+    let placeholderCard = document.createElement("div");
+    placeholderCard.className = "col col_hotel placeholder-glow";
+    placeholderCard.innerHTML = `
+    <a href="#" class="card-link">
+      <div class="card" style="width: 18rem">
+        <div class="card-img-top placeholder"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <span class="placeholder col-5"></span>
+            <span class="placeholder col-2"></span>
+          </p>
+          <h5 class="placeholder col-6"></h5>
+          <small class="placeholder col-9 bg-dark"></small>
+          <h4 class="mt-2 placeholder col-7 placeholder-lg"></h4>
+        </div>
+      </div>
+    </a>`;
+    budget.appendChild(placeholderCard);
+  }
+
+  // Fetching Budget hotels from the database
+  let { data: hotel, error } = await supabase
+    .from("hotel")
+    .select(
+      "id, hotel_rate, hotel_name, hotel_location, hotel_city, price_range, no_reviews"
+    )
+    .eq("hotel_type", "Budget")
+    .order("id", { ascending: true });
+
+  if (error) {
+    console.log("Error fetching hotels: ", error);
+    return;
+  }
+
+  // Fetch images for all hotels in parallel
+  await Promise.all(
+    hotel.map(async (hotel_image) => {
+      let { data: images, error } = await supabase
+        .from("hotel_images")
+        .select("image_path")
+        .eq("hotel_id", hotel_image.id);
+
+      if (error == null) {
+        hotel_image.images = images.map((image) => image.image_path);
+      }
+    })
+  );
+
+  // Remove the placeholder cards
+  let placeholderCards = document.querySelectorAll(".placeholder-glow");
+  placeholderCards.forEach((card) => card.remove());
 
   // Looping through each hotel and creating a div element for it
   hotel.forEach((element) => {
@@ -133,7 +274,7 @@ async function getBudgetHotels() {
       <a href="/hotel_info.html?id=${element.id}" class="card-link">
         <div class="card" style="width: 18rem">
           <img src="${
-            hotelImageUrl + element.hotel_imagepath
+            hotelImageUrl + element.images[0]
           }" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">

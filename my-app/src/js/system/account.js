@@ -1,4 +1,4 @@
-import { supabase } from "../main";
+import { supabase, doLogout } from "../main";
 
 // Load the user's information
 getUserInfo();
@@ -24,5 +24,37 @@ async function getUserInfo() {
         "user-name"
       ).textContent = `${first_name} ${last_name}`;
     }
+
+    // Change the text of the Login link to Logout
+    let loginLinkElement = document.getElementById("login-link");
+    loginLinkElement.childNodes[2].nodeValue = " Logout";
+
+    // Remove the href attribute from the parent a element
+    loginLinkElement.parentNode.removeAttribute("href");
+
+    // Change the classes of the i elements
+    // Change the class of the icon
+    document.getElementById("login-icon").className =
+      "bi bi-box-arrow-right pe-3";
+    loginLinkElement.childNodes[3].remove();
+
+    // Add an event listener to the login-link element that calls doLogout() when clicked
+    loginLinkElement.addEventListener("click", doLogout);
+  } else {
+    // If the user is not logged in, disable the modals and redirect to login.html when clicked
+    let modalElements = document.querySelectorAll("[data-bs-toggle='modal']");
+    modalElements.forEach((element) => {
+      // Skip the Help Center element
+      if (element.getAttribute("data-bs-target") !== "#faqModal") {
+        element.removeAttribute("data-bs-toggle");
+        element.style.cursor = "not-allowed";
+        element.addEventListener("click", function () {
+          window.location.href = "login.html";
+        });
+      } else {
+        // Enable the Help Center modal
+        element.setAttribute("data-bs-toggle", "modal");
+      }
+    });
   }
 }

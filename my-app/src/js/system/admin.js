@@ -1,45 +1,29 @@
-import { supabase } from "../main";
-// !! functionality for notification
-// Success Notification
-function successNotification(message, seconds = 0) {
-  document.querySelector(".alert-success").classList.remove("d-none");
-  document.querySelector(".alert-success").classList.add("d-block");
-  document.querySelector(".alert-success").innerHTML = message;
+import { supabase, doLogout } from "../main";
 
-  if (seconds != 0) {
-    setTimeout(function () {
-      document.querySelector(".alert-success").classList.remove("d-block");
-      document.querySelector(".alert-success").classList.add("d-none");
-    }, seconds * 1000);
+// Load the user's information
+getUserInfo();
+
+// Get the user's information
+async function getUserInfo() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  // If the user is logged in, get the user's information
+  if (user != null) {
+    let { data: user_info, error } = await supabase
+      .from("user_info")
+      .select("*")
+      .eq("user_id", user.id);
+
+    console.log(user_info);
+
+    // Get the Logout link
+    let logoutLinkElement = document.querySelector(
+      ".dropdown-menu .dropdown-item"
+    );
+
+    // Add an event listener to the Logout link that calls doLogout() when clicked
+    logoutLinkElement.addEventListener("click", doLogout);
   }
 }
-
-// Error Notification
-function errorNotification(message, seconds = 0) {
-  document.querySelector(".alert-danger").classList.remove("d-none");
-  document.querySelector(".alert-danger").classList.add("d-block");
-  document.querySelector(".alert-danger").innerHTML = message;
-
-  if (seconds != 0) {
-    setTimeout(function () {
-      document.querySelector(".alert-danger").classList.remove("d-block");
-      document.querySelector(".alert-danger").classList.add("d-none");
-    }, seconds * 1000);
-  }
-}
-
-const btn_logout = document.getElementById("btn_logout");
-btn_logout.onclick = async () => {
-  let { error } = await supabase.auth.signOut();
-
-  if (error == null) {
-    successNotification("Log out successfully!",3 );
-    // ! clear local storage
-    localStorage.clear();
-
-    // ! redirect to index.html
-    window.location.pathname = "/"; 
-  } else {
-    errorNotification("Log out failed!", 3);
-  }
-};

@@ -4,11 +4,15 @@ import { supabase } from "../main";
 function successNotification(message, seconds = 0) {
   document.querySelector(".signup_notif_success").classList.remove("d-none");
   document.querySelector(".signup_notif_success").classList.add("d-block");
-  document.querySelector(".signup_notif_success").innerHTML = message;
+  document.querySelector(
+    ".signup_notif_success"
+  ).innerHTML = `${message} <a href="login.html" class="text-decoration-none">Login</a>`;
 
   if (seconds != 0) {
     setTimeout(function () {
-      document.querySelector(".signup_notif_success").classList.remove("d-block");
+      document
+        .querySelector(".signup_notif_success")
+        .classList.remove("d-block");
       document.querySelector(".signup_notif_success").classList.add("d-none");
     }, seconds * 1000);
   }
@@ -30,7 +34,6 @@ function errorNotification(message, seconds = 0) {
 
 // !! end of functionality
 
-
 const form_register = document.getElementById("form_register");
 
 form_register.onsubmit = async (e) => {
@@ -38,16 +41,18 @@ form_register.onsubmit = async (e) => {
 
   //!! Disable the submit button
   document.querySelector("#form_register button").disabled = true;
-  document.querySelector("#form_register button").innerHTML =
-    `<span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+  document.querySelector(
+    "#form_register button"
+  ).innerHTML = `<span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
     <span>Loading...</span>`;
 
   // !! get value from form
   const formData = new FormData(form_register);
 
   //!! input from the form
-  if (formData.get("password") == formData.get("password_confirmation")) { //!! do action below if true
-                                                                            // !! create user , and check if not null then add data, not null show notifications, reset button and refresh
+  if (formData.get("password") == formData.get("password_confirmation")) {
+    //!! do action below if true
+    // !! create user , and check if not null then add data, not null show notifications, reset button and refresh
     //!! create user
     const { data, error } = await supabase.auth.signUp({
       email: formData.get("email"),
@@ -74,12 +79,10 @@ form_register.onsubmit = async (e) => {
 
       // !! notification
       if (error == null) {
-        successNotification("Sign up successful!", 10);
-
+        successNotification("Sign up successful! Click here to", 30);
       } else {
         errorNotification("Something went wrong, please try again later.", 10);
         console.log(error);
-      
       }
     }
   } else {
