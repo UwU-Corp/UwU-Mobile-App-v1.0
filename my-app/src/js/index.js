@@ -10,7 +10,7 @@ import fq_black from "../assets/icon/faq-fill-black.svg";
 import fq_white from "../assets/icon/faq-fill-white.svg";
 
 // Call the function to load recommended hotels
-getRecommendedHotels();
+// getRecommendedHotels();
 
 // Modal for Search
 const modalSearch = document.getElementById("searchModal");
@@ -40,15 +40,53 @@ window.addEventListener("scroll", function () {
 
 // Function to get Recommended hotels from the database and display them
 async function getRecommendedHotels() {
+  // Getting the recommended element and adding the class 'scrolling-wrapper'
+  let recommended = document.getElementById("recommended");
+  recommended.classList.add("scrolling-wrapper");
+
+  // Create placeholder cards and add them to the recommended element
+  for (let i = 0; i < 5; i++) {
+    let placeholderCard = document.createElement("div");
+    placeholderCard.className = "col col_hotel placeholder-glow";
+    placeholderCard.innerHTML = `
+    <a href="#" class="card-link">
+      <div class="card" style="width: 18rem">
+        <div class="card-img-top placeholder"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <span class="placeholder col-5"></span>
+            <span class="placeholder col-2"></span>
+          </p>
+          <h5 class="placeholder col-6"></h5>
+          <small class="placeholder col-9 bg-dark"></small>
+          <h4 class="mt-2 placeholder col-7 placeholder-lg"></h4>
+        </div>
+      </div>
+    </a>`;
+    recommended.appendChild(placeholderCard);
+  }
+
   // Fetching all hotels from the database
   let { data: hotel, error } = await supabase
     .from("hotel")
     .select("*")
     .order("id", { ascending: true });
 
-  // Getting the recommended element and adding the class 'scrolling-wrapper'
-  let recommended = document.getElementById("recommended");
-  recommended.classList.add("scrolling-wrapper");
+  for (let hotel_image of hotel) {
+    let { data: images, error } = await supabase
+      .from("hotel_images")
+      .select("image_path")
+      .eq("hotel_id", hotel_image.id);
+
+    if (error == null) {
+      console.log(images);
+      hotel_image.images = images.map((image) => image.image_path);
+    }
+  }
+
+  // Remove the placeholder cards
+  let placeholderCards = document.querySelectorAll(".placeholder-glow");
+  placeholderCards.forEach((card) => card.remove());
 
   // Shuffle the array of hotels
   hotel.sort(() => Math.random() - 0.5);
@@ -70,7 +108,7 @@ async function getRecommendedHotels() {
       <a href="/hotel_info.html?id=${element.id}" class="card-link">
         <div class="card" style="width: 18rem">
           <img src="${
-            hotelImageUrl + element.hotel_imagepath
+            hotelImageUrl + element.images[0]
           }" class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">
@@ -88,3 +126,6 @@ async function getRecommendedHotels() {
     recommended.appendChild(hotelDiv);
   });
 }
+
+// Call the function to load recommended hotels when the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", getRecommendedHotels);
