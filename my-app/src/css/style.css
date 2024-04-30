@@ -338,6 +338,10 @@ body {
   font-size: 25px;
 }
 
+.card-link {
+  text-decoration: none;
+}
+
 /* ==== */
 
 /* Bottom Nav Bar */
