@@ -73,6 +73,7 @@ form_register.onsubmit = async (e) => {
             contact_num: formData.get("contact_num"),
             address: formData.get("address"),
             user_id: user_id,
+            role: "customer", // automatically set the role to customer
           },
         ])
         .select();

@@ -66,7 +66,7 @@ async function getRecommendedHotels() {
   let { data: hotel, error } = await supabase
     .from("hotel")
     .select(
-      "id, hotel_rate, hotel_name, hotel_location, hotel_city, price_range, no_reviews"
+      "id, hotel_rate, hotel_name, hotel_street, hotel_city, price_range, no_reviews"
     );
 
   if (error) {
@@ -120,7 +120,7 @@ async function getRecommendedHotels() {
               <span>(${element.no_reviews})</span>
             </p>
             <h5>${element.hotel_name}</h5>
-            <small>${element.hotel_location}, ${element.hotel_city}</small>
+            <small>${element.hotel_street}, ${element.hotel_city}</small>
             <h4 class="pt-2"><b>₱${element.price_range}</b></h4>
           </div>
         </div>

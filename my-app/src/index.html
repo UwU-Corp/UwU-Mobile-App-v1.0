@@ -52,7 +52,7 @@
                   <input
                     class="ps-2"
                     type="search"
-                    placeholder="Search for location"
+                    placeholder="Search for hotels, location, and more..."
                     aria-label="Search"
                     readonly
                   />
@@ -96,7 +96,7 @@
                         id="searchInput"
                         class="ps-2"
                         type="search"
-                        placeholder="Search for location"
+                        placeholder="Search for hotels, location, and more..."
                         aria-label="Search"
                       />
                       <button class="btn sm_btn">
@@ -137,6 +137,75 @@
       </div>
       <!-- End of Intro Logo -->
     </div>
+
+    <!-- Featured Destinations -->
+    <div class="container mt-3 mb-1">
+      <h4 class="py-3">Featured Destinations</h4>
+      <div class="scrolling-wrapper py-1 text-center">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <img
+            src="./assets/icon/near-me-svgrepo-com.svg"
+            class="rounded-circle c_items"
+            alt=""
+          />
+          <p class="p-1">Nearby</p>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+          <img
+            src="./assets/imgs/Butuan.jpg"
+            class="rounded-circle c_items"
+            alt=""
+            data-bs-toggle="modal"
+            data-bs-target="#butuanModal1"
+          />
+          <p class="p-1">Butuan</p>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+          <img
+            src="./assets/imgs/Surigao.jpg"
+            class="rounded-circle c_items"
+            alt=""
+          />
+          <p class="p-1">Surigao</p>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+          <img
+            src="./assets/imgs/Cabadbaran.jpg"
+            class="rounded-circle c_items"
+            alt=""
+          />
+          <p class="p-1">Cabadbaran</p>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          <img
+            src="./assets/imgs/Soon.png"
+            class="rounded-circle c_items"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <!-- End of Featured Destinations -->
+
+    <!-- Recommended -->
+    <div class="container mb-1">
+      <h4 class="py-3">Recommended</h4>
+      <div class="scrolling-wrapper grid gap-4" id="recommended">
+        <!-- get random recommended hotels -->
+      </div>
+    </div>
+    <!-- End of Recommended -->
+
+    <!-- Weekend Sale -->
+    <div class="container my-3">
+      <h5 class="py-3">Weekend Sale🎉</h5>
+      <img
+        class="rounded-4 promo"
+        src="./assets/imgs/WeekendPromo.png"
+        alt=""
+      />
+    </div>
+    <!-- End of Weekend Sale -->
 
     <!-- Faq Modal -->
     <div
@@ -369,407 +438,6 @@
       </div>
     </div>
     <!-- End of Faq Modal -->
-
-    <!-- Featured Destinations -->
-    <div class="container mt-3 mb-1">
-      <h4 class="py-3">Featured Destinations</h4>
-      <div class="scrolling-wrapper py-1 text-center">
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-          <img
-            src="./assets/icon/near-me-svgrepo-com.svg"
-            class="rounded-circle c_items"
-            alt=""
-          />
-          <p class="p-1">Nearby</p>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
-          <img
-            src="./assets/imgs/Butuan.jpg"
-            class="rounded-circle c_items"
-            alt=""
-            data-bs-toggle="modal"
-            data-bs-target="#butuanModal1"
-          />
-          <p class="p-1">Butuan</p>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
-          <img
-            src="./assets/imgs/Surigao.jpg"
-            class="rounded-circle c_items"
-            alt=""
-          />
-          <p class="p-1">Surigao</p>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
-          <img
-            src="./assets/imgs/Cabadbaran.jpg"
-            class="rounded-circle c_items"
-            alt=""
-          />
-          <p class="p-1">Cabadbaran</p>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-          <img
-            src="./assets/imgs/Soon.png"
-            class="rounded-circle c_items"
-            alt=""
-          />
-        </div>
-      </div>
-    </div>
-    <!-- End of Featured Destinations -->
-
-    <!-- Butuan Modal for Search -->
-    <div
-      class="modal"
-      id="butuanModal"
-      tabindex="-1"
-      aria-labelledby="butuanModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
-          <div class="container-fluid">
-            <div class="container py-3">
-              <div class="row">
-                <div class="col-10">
-                  <div
-                    class="position-relative search_box search_btn align-items-center"
-                  >
-                    <img
-                      src="./assets/icon/search-fill.svg"
-                      alt="Search Icon"
-                    />
-                    <input
-                      id="searchInput"
-                      class="ps-2"
-                      type="search"
-                      aria-label="Search"
-                      value="Butuan"
-                      readonly
-                    />
-                  </div>
-                </div>
-
-                <div class="col-2 text-center my-auto">
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-toggle="modal"
-                    data-bs-target="#searchModal"
-                  ></button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-body">
-            <div class="ih_item">
-              <div class="col col_hotel mx-auto">
-                <a href="hotel_info.html" class="text-decoration-none">
-                  <div class="card shadow-sm">
-                    <img
-                      src="./assets/imgs/Butuan_Watergate.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-body">
-                      <p class="card-text">
-                        <i class="bi bi-star-fill"></i
-                        ><i class="bi bi-star-fill"></i
-                        ><i class="bi bi-star-fill"></i
-                        ><i class="bi bi-star-fill"></i
-                        ><i class="bi bi-star"></i> 4.3
-                        <span>(703)</span>
-                      </p>
-                      <h5>Watergate Hotel</h5>
-                      <small>Jose Rosales Ave, Butuan City</small>
-                      <h4 class="pt-2"><b>₱3,096</b></h4>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <div class="col col_hotel mx-auto pt-4">
-                <div class="card shadow-sm">
-                  <img
-                    src="./assets/imgs/Butuan_Hotel Oazis.jpeg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <p class="card-text">
-                      <i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star"></i> 4.2
-                      <span>(611)</span>
-                    </p>
-                    <h5>Hotel Oazis</h5>
-                    <small>Butuan City</small>
-                    <h4 class="pt-2"><b>₱2,950</b></h4>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col col_hotel mx-auto pt-4">
-                <div class="card shadow-sm">
-                  <img
-                    src="./assets/imgs/Butuan_Red Palm.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <p class="card-text">
-                      <i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star"></i> 4.1 <span>(115)</span>
-                    </p>
-                    <h5>The Red Palm</h5>
-                    <small>Villa Kananga Rd, Butuan City</small>
-                    <h4 class="pt-2"><b>₱2,020</b></h4>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col col_hotel mx-auto pt-4">
-                <div class="card shadow-sm">
-                  <img
-                    src="./assets/imgs/Butuan_Go Hotels.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <p class="card-text">
-                      <i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star"></i> 4.0 <span>(960)</span>
-                    </p>
-                    <h5>Go Hotels</h5>
-                    <small>J C Aquino Ave, Butuan City</small>
-                    <h4 class="pt-2"><b>₱1,618</b></h4>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col col_hotel mx-auto py-4">
-                <div class="card shadow-sm">
-                  <img
-                    src="./assets/imgs/Butuan_Flor-Al.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <p class="card-text">
-                      <i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-half"></i
-                      ><i class="bi bi-star"></i> 3.5 <span>(695)</span>
-                    </p>
-                    <h5>Flor-Al Mansion</h5>
-                    <small>J C Aquino Ave, Butuan City</small>
-                    <h4 class="pt-2"><b>₱336</b></h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End of Butuan Modal for Search -->
-
-    <!-- Butuan Modal for Recommended -->
-    <div
-      class="modal"
-      id="butuanModal1"
-      tabindex="-1"
-      aria-labelledby="butuanModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
-          <div class="container-fluid">
-            <div class="container py-3">
-              <div class="row">
-                <div class="col-10">
-                  <div
-                    class="position-relative search_box search_btn align-items-center"
-                  >
-                    <img
-                      src="./assets/icon/search-fill.svg"
-                      alt="Search Icon"
-                    />
-                    <input
-                      id="searchInput"
-                      class="ps-2"
-                      type="search"
-                      aria-label="Search"
-                      value="Butuan"
-                      readonly
-                    />
-                  </div>
-                </div>
-
-                <div class="col-2 text-center my-auto">
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-body">
-            <div class="ih_item">
-              <div
-                class="col col_hotel mx-auto"
-                data-bs-toggle="modal"
-                data-bs-target="#Butuan_Watergate"
-              >
-                <div class="card shadow-sm">
-                  <img
-                    src="./assets/imgs/Butuan_Watergate.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <p class="card-text">
-                      <i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star"></i> 4.3
-                      <span>(703)</span>
-                    </p>
-                    <h5>Watergate Hotel</h5>
-                    <small>Jose Rosales Ave, Butuan City</small>
-                    <h4 class="pt-2"><b>₱3,096</b></h4>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col col_hotel mx-auto pt-4">
-                <div class="card shadow-sm">
-                  <img
-                    src="./assets/imgs/Butuan_Hotel Oazis.jpeg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <p class="card-text">
-                      <i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star"></i> 4.2
-                      <span>(611)</span>
-                    </p>
-                    <h5>Hotel Oazis</h5>
-                    <small>Butuan City</small>
-                    <h4 class="pt-2"><b>₱2,950</b></h4>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col col_hotel mx-auto pt-4">
-                <div class="card shadow-sm">
-                  <img
-                    src="./assets/imgs/Butuan_Red Palm.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <p class="card-text">
-                      <i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star"></i> 4.1 <span>(115)</span>
-                    </p>
-                    <h5>The Red Palm</h5>
-                    <small>Villa Kananga Rd, Butuan City</small>
-                    <h4 class="pt-2"><b>₱2,020</b></h4>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col col_hotel mx-auto pt-4">
-                <div class="card shadow-sm">
-                  <img
-                    src="./assets/imgs/Butuan_Go Hotels.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <p class="card-text">
-                      <i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star"></i> 4.0 <span>(960)</span>
-                    </p>
-                    <h5>Go Hotels</h5>
-                    <small>J C Aquino Ave, Butuan City</small>
-                    <h4 class="pt-2"><b>₱1,618</b></h4>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col col_hotel mx-auto py-4">
-                <div class="card shadow-sm">
-                  <img
-                    src="./assets/imgs/Butuan_Flor-Al.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
-                  <div class="card-body">
-                    <p class="card-text">
-                      <i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-fill"></i
-                      ><i class="bi bi-star-half"></i
-                      ><i class="bi bi-star"></i> 3.5 <span>(695)</span>
-                    </p>
-                    <h5>Flor-Al Mansion</h5>
-                    <small>J C Aquino Ave, Butuan City</small>
-                    <h4 class="pt-2"><b>₱336</b></h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End of Butuan Modal for Recommended -->
-
-    <!-- Recommended -->
-    <div class="container mb-1">
-      <h4 class="py-3">Recommended</h4>
-      <div class="scrolling-wrapper grid gap-4" id="recommended">
-        <!-- get random recommended hotels -->
-      </div>
-    </div>
-    <!-- End of Recommended -->
-
-    <!-- Weekend Sale -->
-    <div class="container my-3">
-      <h5 class="py-3">Weekend Sale🎉</h5>
-      <img
-        class="rounded-4 promo"
-        src="./assets/imgs/WeekendPromo.png"
-        alt=""
-      />
-    </div>
-    <!-- End of Weekend Sale -->
 
     <br /><br /><br />
 
