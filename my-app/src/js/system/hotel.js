@@ -46,7 +46,7 @@ async function getDeluxeHotels() {
   let { data: hotel, error } = await supabase
     .from("hotel")
     .select(
-      "id, hotel_rate, hotel_name, hotel_location, hotel_city, price_range, no_reviews"
+      "id, hotel_rate, hotel_name, hotel_street, hotel_city, price_range, no_reviews"
     )
     .eq("hotel_type", "Deluxe")
     .order("id", { ascending: true });
@@ -96,7 +96,7 @@ async function getDeluxeHotels() {
               <span>(${element.no_reviews})</span>
             </p>
             <h5>${element.hotel_name}</h5>
-            <small>${element.hotel_location}, ${element.hotel_city}</small>
+            <small>${element.hotel_street}, ${element.hotel_city}</small>
             <h4 class="pt-2"><b>₱${element.price_range}</b></h4>
           </div>
         </div>
@@ -139,7 +139,7 @@ async function getStandardHotels() {
   let { data: hotel, error } = await supabase
     .from("hotel")
     .select(
-      "id, hotel_rate, hotel_name, hotel_location, hotel_city, price_range, no_reviews"
+      "id, hotel_rate, hotel_name, hotel_street, hotel_city, price_range, no_reviews"
     )
     .eq("hotel_type", "Standard")
     .order("id", { ascending: true });
@@ -189,7 +189,7 @@ async function getStandardHotels() {
               <span>(${element.no_reviews})</span>
             </p>
             <h5>${element.hotel_name}</h5>
-            <small>${element.hotel_location}, ${element.hotel_city}</small>
+            <small>${element.hotel_street}, ${element.hotel_city}</small>
             <h4 class="pt-2"><b>₱${element.price_range}</b></h4>
           </div>
         </div>
@@ -232,7 +232,7 @@ async function getBudgetHotels() {
   let { data: hotel, error } = await supabase
     .from("hotel")
     .select(
-      "id, hotel_rate, hotel_name, hotel_location, hotel_city, price_range, no_reviews"
+      "id, hotel_rate, hotel_name, hotel_street, hotel_city, price_range, no_reviews"
     )
     .eq("hotel_type", "Budget")
     .order("id", { ascending: true });
@@ -282,7 +282,7 @@ async function getBudgetHotels() {
               <span>(${element.no_reviews})</span>
             </p>
             <h5>${element.hotel_name}</h5>
-            <small>${element.hotel_location}, ${element.hotel_city}</small>
+            <small>${element.hotel_street}, ${element.hotel_city}</small>
             <h4 class="pt-2"><b>₱${element.price_range}</b></h4>
           </div>
         </div>
