@@ -5,6 +5,8 @@ import {
   generateStarRating,
 } from "../main";
 
+import mapIcon from "../../assets/icon/location.svg";
+
 // Call the function to update the hotel info
 updateHotelInfo();
 
@@ -27,6 +29,7 @@ async function updateHotelInfo() {
 
   if (error == null) {
     console.log(hotel);
+
     // Fetch the hotel_image data from the database
     let { data: hotelImages, error: imageError } = await supabase
       .from("hotel_images")
@@ -37,6 +40,8 @@ async function updateHotelInfo() {
       console.log(hotelImages);
       // Generate the carousel with the hotel images
       generateCarousel(hotelImages);
+
+      displayHotelIntro(hotel);
     } else {
       console.error("Error fetching hotel image data:", imageError);
     }
@@ -97,4 +102,42 @@ function generateCarousel(hotelImages) {
   //     carouselInner.innerHTML = carouselItems;
   //     carouselIndicators.innerHTML = carouselIndicatorsHtml;
   //   }, 1000); // Adjust the delay as needed
+}
+
+function displayHotelIntro(hotelData) {
+  // Destructure the hotelData object to get the necessary fields
+  const { hotel_name, hotel_rate, no_reviews, hotel_location } = hotelData;
+
+  // Generate the stars HTML
+  const starsHTML = generateStarRating(hotel_rate);
+
+  // Generate the hotel intro HTML
+  const hotelIntroHTML = `
+        <div class="container pt-3 pb-4">
+            <div class="row">
+                <div class="col hm_card">
+                    <h2 class="d-block">${hotel_name}</h2>
+                    <h5 class="d-block">
+                        ${starsHTML} ${hotel_rate}
+                        <a class="text-decoration-none" href="#RatingsSection">
+                            <small>(${no_reviews})</small>
+                        </a>
+                    </h5>
+                </div>
+            </div>
+            <div class="d-flex align-items-center pt-3">
+                <div class="flex-grow-1">
+                    <span>${hotel_location}</span>
+                </div>
+                <div class="flex-column hm_img text-center px-2" data-bs-toggle="modal" data-bs-target="#mapModal">
+                    <img src="${mapIcon}" alt="..." />
+                    <small>Map</small>
+                </div>
+            </div>
+        </div>
+  `;
+
+  // Insert the hotel intro HTML into the page
+  const hotelIntroContainer = document.querySelector("#hotelIntroContainer");
+  hotelIntroContainer.innerHTML = hotelIntroHTML;
 }
