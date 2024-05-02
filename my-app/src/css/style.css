@@ -18,6 +18,10 @@ body {
   );
 }
 
+.pcolor {
+  color: #0096c7;
+}
+
 .topbar_bg {
   background-color: #ffffff;
 }

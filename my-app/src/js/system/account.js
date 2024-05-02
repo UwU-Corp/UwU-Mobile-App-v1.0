@@ -13,7 +13,7 @@ async function getUserInfo() {
   if (user != null) {
     let { data: user_info, error } = await supabase
       .from("user_info")
-      .select("first_name, last_name, address, contact_num")
+      .select("*")
       .eq("user_id", user.id);
     console.log(user_info);
 
