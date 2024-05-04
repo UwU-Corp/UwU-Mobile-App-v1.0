@@ -357,6 +357,13 @@ body {
   background: #ddd;
   margin-bottom: 1rem;
 }
+
+.modal-dialog.modal-edit {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 95%;
+}
 /* ==== */
 
 /* Bottom Nav Bar */
@@ -406,12 +413,12 @@ body {
   color: #4cb5d8;
 }
 
-.modal-backdrop {
+/* .modal-backdrop {
   display: none;
 }
 
 .modal {
   overflow-y: auto;
-}
+} */
 
 /* ==== */

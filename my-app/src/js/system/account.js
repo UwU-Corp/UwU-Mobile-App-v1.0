@@ -32,8 +32,7 @@ async function getUserInfo() {
     // Remove the href attribute from the parent a element
     loginLinkElement.parentNode.removeAttribute("href");
 
-    // Change the classes of the i elements
-    // Change the class of the icon
+    // Change the icon of the login-link element to a logout icon
     document.getElementById("login-icon").className =
       "bi bi-box-arrow-right pe-3";
     loginLinkElement.childNodes[3].remove();

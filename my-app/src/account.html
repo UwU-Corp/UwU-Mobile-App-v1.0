@@ -55,7 +55,6 @@
       <br />
 
       <!-- Account Box -->
-
       <div class="container bg-white shadow-sm rounded-4">
         <div class="container pt-4 pb-4">
           <div
@@ -72,15 +71,16 @@
             </div>
           </div>
           <hr class="border-dark-subtle" />
-          <div class="row" data-bs-toggle="modal" data-bs-target="#personaInfo">
-            <div class="col acc_icon">
-              <h5>
-                <i class="bi bi-chat-right-text pe-3"></i> Personal Info<i
-                  class="bi bi-chevron-right float-end"
-                ></i>
-              </h5>
-            </div>
-          </div>
+          <a href="personal_info.html" class="text-decoration-none a_textcolor">
+            <div class="row">
+              <div class="col acc_icon">
+                <h5>
+                  <i class="bi bi-chat-right-text pe-3"></i> Personal Info<i
+                    class="bi bi-chevron-right float-end"
+                  ></i>
+                </h5>
+              </div></div
+          ></a>
           <hr class="border-dark-subtle" />
           <div class="row">
             <div class="col acc_icon">
@@ -94,6 +94,7 @@
         </div>
       </div>
       <!-- End of Account Box -->
+
       <br />
     </div>
 
@@ -424,13 +425,15 @@
     </div>
     <!-- End of Booking Details Modal -->
 
-    <!-- !! Personal Info Modal -->
+    <!-- Personal Info Modal -->
     <div
-      class="modal fade"
+      class="modal"
       id="personaInfo"
       tabindex="-1"
       aria-labelledby="personaInfoModalLabel"
       aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
     >
       <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
@@ -447,7 +450,11 @@
           </div>
           <div class="modal-body p-0 gray_bg">
             <div class="bg-white mt-2 py-3">
-              <div class="container d-flex justify-content-between">
+              <div
+                class="container d-flex justify-content-between"
+                data-bs-toggle="modal"
+                data-bs-target="#emailModal"
+              >
                 <span>Email</span>
                 <div class="d-flex align-items-center">
                   <span
@@ -529,7 +536,7 @@
         </div>
       </div>
     </div>
-    <!-- !! End personal info Modal -->
+    <!-- End of Personal Info Modal -->
 
     <!-- Bottom-Bar -->
     <footer class="fixed-bottom">
