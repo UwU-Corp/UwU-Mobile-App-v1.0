@@ -11,6 +11,9 @@ import { setRouter } from "./router/router.js";
 // Import supabase
 import { createClient } from "@supabase/supabase-js";
 
+// Import Toastify
+import Toastify from "toastify-js";
+
 // Set Router
 setRouter();
 
@@ -61,9 +64,11 @@ async function performSearch(query) {
   let { data: hotel, error } = await supabase
     .from("hotel")
     .select(
-      "id, hotel_rate, hotel_name, hotel_street, hotel_city, price_range, no_reviews"
+      "id, hotel_rate, hotel_name, hotel_street, hotel_city, price_range, no_reviews, hotel_location"
     )
-    .or("hotel_name.ilike.%" + query + "%, hotel_city.ilike.%" + query + "%");
+    .or(
+      "hotel_name.ilike.%" + query + "%, hotel_location.ilike.%" + query + "%"
+    );
 
   // Display loading placeholders
   const searchResults = document.querySelector("#searchResults");
@@ -173,6 +178,7 @@ async function doLogout(event) {
 
 export {
   supabase,
+  Toastify,
   hotelImageUrl,
   roomImageUrl,
   searchModal,
