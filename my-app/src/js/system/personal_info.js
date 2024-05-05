@@ -1,4 +1,4 @@
-import { supabase, Toastify } from "../main";
+import { supabase, Toastify, bootstrap } from "../main";
 
 getUserInfo();
 
@@ -175,29 +175,93 @@ document
     }
   });
 
-// Add the event listener for the button's click event
-// document
-//   .querySelector("#resetPassword")
-//   .addEventListener("click", async (event) => {
-//     // Prevent the button from submitting a form or refreshing the page
-//     event.preventDefault();
+// Get the modal instance
+const passwordResetModal = new bootstrap.Modal(
+  document.getElementById("passwordResetModal")
+);
 
-//     const emailInput = document.getElementById("email");
-//     const { data, error } = await supabase.auth.resetPasswordForEmail(
-//       emailInput.value
-//     );
+// Add the event listener for the form's submit event to update the user's password
+document
+  .getElementById("passwordResetForm")
+  .addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const newPassword = document.getElementById("newPassword").value;
+    const { data, error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+    if (error) {
+      console.error("Error updating password:", error);
+      Toastify({
+        text: "Too many requests. Please try again later.",
+        duration: 9000,
+        gravity: "top",
+        position: "center",
+        style: {
+          background:
+            "linear-gradient(90deg, rgba(187,10,26,1) 15%, rgba(226,37,54,1) 65%, rgba(255,64,81,1) 90%)",
+        },
+      }).showToast();
+    } else {
+      console.log("Password change successfully");
+      passwordResetModal.hide();
 
+      Toastify({
+        text: "Password change successfully!",
+        duration: 5000,
+        gravity: "top",
+        position: "center",
+        style: {
+          background:
+            "linear-gradient(90deg, rgba(0,150,199,1) 25%, rgba(44,168,209,1) 60%, rgba(82,184,217,1) 90%)",
+        },
+      }).showToast();
+    }
+  });
+
+// Add the event listener for the reset password
+// document.getElementById("resetPassword").addEventListener("click", async () => {
+//   const {
+//     data: { user },
+//   } = await supabase.auth.getUser();
+//   if (user) {
+//     const { error } = await supabase.auth.resetPasswordForEmail(user.email);
 //     if (error) {
-//       console.log("Error sending password reset email:", error);
-//     } else {
-//       // Display a toast notification
+//       console.error("Error sending password reset email:", error);
 //       Toastify({
-//         text: "Password reset email sent",
-//         duration: 3000,
-//         close: true,
-//         gravity: "top", // `top` or `bottom`
-//         position: "right", // `left`, `center` or `right`
-//         backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+//         text: "Too many requests. Please try again later.",
+//         duration: 9000,
+//         gravity: "top",
+//         position: "center",
+//         style: {
+//           background:
+//             "linear-gradient(90deg, rgba(187,10,26,1) 15%, rgba(226,37,54,1) 65%, rgba(255,64,81,1) 90%)",
+//         },
+//       }).showToast();
+//     } else {
+//       console.log("Password reset email sent");
+//       Toastify({
+//         text: "Password reset email sent successfully! Please check your inbox.",
+//         duration: 9000,
+//         gravity: "top",
+//         position: "center",
+//         style: {
+//           background:
+//             "linear-gradient(90deg, rgba(0,150,199,1) 25%, rgba(44,168,209,1) 60%, rgba(82,184,217,1) 90%)",
+//         },
 //       }).showToast();
 //     }
-//   });
+//   }
+// });
+
+// document.getElementById("testDiv").addEventListener("click", () => {
+//   Toastify({
+//     text: "Password reset email sent successfully! Please check your inbox.",
+//     duration: 5000,
+//     gravity: "top", // `top` or `bottom`
+//     position: "center", // `left`, `center` or `right`
+//     style: {
+//       background:
+//         "linear-gradient(90deg, rgba(0,150,199,1) 25%, rgba(44,168,209,1) 60%, rgba(82,184,217,1) 90%)",
+//     },
+//   }).showToast();
+// });

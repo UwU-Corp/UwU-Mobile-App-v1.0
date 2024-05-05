@@ -139,7 +139,8 @@
         <hr class="border-dark-subtle mx-2" />
         <div
           class="container d-flex justify-content-between"
-          id="resetPassword"
+          data-bs-toggle="modal"
+          data-bs-target="#passwordResetModal"
         >
           <span>Change Password</span>
           <div class="d-flex align-items-center">
@@ -154,6 +155,14 @@
       </div>
     </div>
 
+    <!-- Test div -->
+    <!-- <div
+      id="testDiv"
+      style="width: 100px; height: 100px; background-color: lightblue"
+    >
+      Click me
+    </div> -->
+
     <!-- Email Modal -->
     <div
       class="modal fade"
@@ -165,7 +174,7 @@
       <div class="modal-dialog modal-edit">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="emailModalLabel">Change Email</h5>
+            <h5 class="modal-title" id="emailModalLabel">Update Email</h5>
             <button
               type="button"
               class="btn-close"
@@ -203,7 +212,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="firstNameModalLabel">
-              Change First Name
+              Update First Name
             </h5>
             <button
               type="button"
@@ -242,7 +251,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="lastNameModalLabel">
-              Change Last Name
+              Update Last Name
             </h5>
             <button
               type="button"
@@ -281,7 +290,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="contactNoModalLabel">
-              Change Contact No.
+              Update Contact No.
             </h5>
             <button
               type="button"
@@ -319,7 +328,7 @@
       <div class="modal-dialog modal-edit">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="addressModalLabel">Change Address</h5>
+            <h5 class="modal-title" id="addressModalLabel">Update Address</h5>
             <button
               type="button"
               class="btn-close"
@@ -344,6 +353,49 @@
       </div>
     </div>
     <!-- End of Address Modal -->
+
+    <!-- Password Reset Modal -->
+    <div
+      class="modal fade"
+      id="passwordResetModal"
+      tabindex="-1"
+      aria-labelledby="passwordResetModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-edit">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="passwordResetModalLabel">
+              Change Password
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="passwordResetForm">
+              <div class="mb-3">
+                <label for="newPassword" class="form-label">New Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="newPassword"
+                  required
+                />
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-1 py-2">
+                  Save changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script>
       function goBack() {

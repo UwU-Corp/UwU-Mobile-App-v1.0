@@ -40,20 +40,20 @@ async function getUserInfo() {
     // Add an event listener to the login-link element that calls doLogout() when clicked
     loginLinkElement.addEventListener("click", doLogout);
   } else {
-    // If the user is not logged in, disable the modals and redirect to login.html when clicked
-    let modalElements = document.querySelectorAll("[data-bs-toggle='modal']");
-    modalElements.forEach((element) => {
-      // Skip the Help Center element
-      if (element.getAttribute("data-bs-target") !== "#faqModal") {
-        element.removeAttribute("data-bs-toggle");
-        element.style.cursor = "not-allowed";
-        element.addEventListener("click", function () {
-          window.location.href = "login.html";
-        });
-      } else {
-        // Enable the Help Center modal
-        element.setAttribute("data-bs-toggle", "modal");
-      }
-    });
+    // // If the user is not logged in, disable the modals and redirect to login.html when clicked
+    // let modalElements = document.querySelectorAll("[data-bs-toggle='modal']");
+    // modalElements.forEach((element) => {
+    //   // Skip the Help Center element
+    //   if (element.getAttribute("data-bs-target") !== "#faqModal") {
+    //     element.removeAttribute("data-bs-toggle");
+    //     element.style.cursor = "not-allowed";
+    //     element.addEventListener("click", function () {
+    //       window.location.href = "login.html";
+    //     });
+    //   } else {
+    //     // Enable the Help Center modal
+    //     element.setAttribute("data-bs-toggle", "modal");
+    //   }
+    // });
   }
 }
