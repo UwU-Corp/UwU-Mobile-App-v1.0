@@ -12,6 +12,8 @@ import { setRouter } from "./router/router.js";
 import { createClient } from "@supabase/supabase-js";
 
 // Import Toastify
+import "../css/toastify.css";
+
 import Toastify from "toastify-js";
 
 // Set Router
@@ -178,6 +180,7 @@ async function doLogout(event) {
 
 export {
   supabase,
+  bootstrap,
   Toastify,
   hotelImageUrl,
   roomImageUrl,
