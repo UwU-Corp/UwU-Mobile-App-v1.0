@@ -1,4 +1,4 @@
-import { supabase, doLogout } from "../main";
+import { supabase, doLogout, bootstrap } from "../main";
 
 // Load the user's information
 getUserInfo();
@@ -40,20 +40,50 @@ async function getUserInfo() {
     // Add an event listener to the login-link element that calls doLogout() when clicked
     loginLinkElement.addEventListener("click", doLogout);
   } else {
-    // // If the user is not logged in, disable the modals and redirect to login.html when clicked
-    // let modalElements = document.querySelectorAll("[data-bs-toggle='modal']");
-    // modalElements.forEach((element) => {
-    //   // Skip the Help Center element
-    //   if (element.getAttribute("data-bs-target") !== "#faqModal") {
-    //     element.removeAttribute("data-bs-toggle");
-    //     element.style.cursor = "not-allowed";
-    //     element.addEventListener("click", function () {
-    //       window.location.href = "login.html";
-    //     });
-    //   } else {
-    //     // Enable the Help Center modal
-    //     element.setAttribute("data-bs-toggle", "modal");
-    //   }
-    // });
+    // If the user is not logged in, redirect to login page when certain elements are clicked
+    ["bookings-link", "personal-info-link", "notifications-link"].forEach(
+      (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.addEventListener("click", function (event) {
+            event.preventDefault();
+            window.location.href = "login.html";
+          });
+        }
+      }
+    );
   }
 }
+
+// // Add an event listener to all clickable elements
+// document.querySelectorAll("a, button").forEach((element) => {
+//   // Exclude the "Help Center" modal
+//   if (element.getAttribute("data-bs-target") !== "#faqModal") {
+//     element.addEventListener("click", (event) => {
+//       event.preventDefault();
+//       window.location.href = "login.html";
+//     });
+//   }
+// });
+// // Add an event listener to the 'hidden' event of the "Help Center" modal
+// var faqModal = document.getElementById("faqModal");
+// var bsModal = new bootstrap.Modal(faqModal);
+// faqModal.addEventListener("hidden.bs.modal", function (event) {
+//   window.location.href = "account.html";
+// });
+
+// // If the user is not logged in, disable the modals and redirect to login.html when clicked
+// let modalElements = document.querySelectorAll("[data-bs-toggle='modal']");
+// modalElements.forEach((element) => {
+//   // Skip the Help Center element
+//   if (element.getAttribute("data-bs-target") !== "#faqModal") {
+//     element.removeAttribute("data-bs-toggle");
+//     element.style.cursor = "not-allowed";
+//     element.addEventListener("click", function () {
+//       window.location.href = "login.html";
+//     });
+//   } else {
+//     // Enable the Help Center modal
+//     element.setAttribute("data-bs-toggle", "modal");
+//   }
+// });

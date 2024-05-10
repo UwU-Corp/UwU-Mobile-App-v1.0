@@ -57,21 +57,28 @@
       <!-- Account Box -->
       <div class="container bg-white shadow-sm rounded-4">
         <div class="container pt-4 pb-4">
-          <div
-            class="row"
-            data-bs-toggle="modal"
-            data-bs-target="#bookingDetails"
+          <a
+            href="booking.html"
+            id="bookings-link"
+            class="text-decoration-none a_textcolor"
           >
-            <div class="col acc_icon">
-              <h5>
-                <i class="bi bi-file-text pe-3"></i> Bookings<i
-                  class="bi bi-chevron-right float-end"
-                ></i>
-              </h5>
+            <div class="row">
+              <div class="col acc_icon">
+                <h5>
+                  <i class="bi bi-file-text pe-3"></i> Bookings<i
+                    class="bi bi-chevron-right float-end"
+                  ></i>
+                </h5>
+              </div>
             </div>
-          </div>
+          </a>
+
           <hr class="border-dark-subtle" />
-          <a href="personal_info.html" class="text-decoration-none a_textcolor">
+          <a
+            href="personal_info.html"
+            id="personal-info-link"
+            class="text-decoration-none a_textcolor"
+          >
             <div class="row">
               <div class="col acc_icon">
                 <h5>
@@ -82,7 +89,7 @@
               </div></div
           ></a>
           <hr class="border-dark-subtle" />
-          <div class="row">
+          <div class="row" id="notifications-link">
             <div class="col acc_icon">
               <h5>
                 <i class="bi bi-envelope pe-3"></i> Notifications<i
@@ -94,7 +101,6 @@
         </div>
       </div>
       <!-- End of Account Box -->
-
       <br />
     </div>
 
@@ -360,183 +366,6 @@
       </div>
     </div>
     <!-- End of Faq Modal -->
-
-    <!-- Booking Details Modal -->
-    <div
-      class="modal fade"
-      id="bookingDetails"
-      tabindex="-1"
-      aria-labelledby="bookingDetailsModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="bookingDetails">Bookings</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body gray_bg">
-            <div class="container bg-white shadow-sm rounded-4 pb-3">
-              <h3 class="pt-3">Recent Bookings</h3>
-              <hr class="border-dark-subtle" />
-              <div class="row fw-semibold pt-1">
-                <div class="col-6">Hotel</div>
-                <div class="col-3">Status</div>
-                <div class="col-3">Details</div>
-              </div>
-              <hr class="border-dark-subtle my-2" />
-              <div class="row align-items-center b_details">
-                <div class="col-6"><span>Watergate Hotel</span></div>
-                <div class="col-3">
-                  <small class="bg-success text-white rounded-2 p-1"
-                    >Confirmed</small
-                  >
-                </div>
-                <div class="col-3">
-                  <small
-                    class="btn btn-outline-secondary rounded-2 px-2 py-1 text-wrap"
-                    >Details</small
-                  >
-                </div>
-              </div>
-            </div>
-            <br />
-            <div class="container bg-white shadow-sm rounded-4 pb-3">
-              <h3 class="pt-3">Previous Bookings</h3>
-              <hr class="border-dark-subtle" />
-              <div class="row fw-semibold pt-1">
-                <div class="col-6">Hotel</div>
-                <div class="col-3">Status</div>
-                <div class="col-3">Details</div>
-              </div>
-              <hr class="border-dark-subtle my-2" />
-              <div class="row align-items-center b_details text-center py-5">
-                <div class="col"><span>No Previous Bookings</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End of Booking Details Modal -->
-
-    <!-- Personal Info Modal -->
-    <div
-      class="modal"
-      id="personaInfo"
-      tabindex="-1"
-      aria-labelledby="personaInfoModalLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-    >
-      <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
-          <div class="modal-header container">
-            <h1 class="modal-title fs-5" id="personaInfo">
-              Personal information
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body p-0 gray_bg">
-            <div class="bg-white mt-2 py-3">
-              <div
-                class="container d-flex justify-content-between"
-                data-bs-toggle="modal"
-                data-bs-target="#emailModal"
-              >
-                <span>Email</span>
-                <div class="d-flex align-items-center">
-                  <span
-                    class="pcolor fst-italic fw-light text-truncate"
-                    style="max-width: 200px"
-                  >
-                    jorenverylongemailthatmaybreakui@gmail.com
-                  </span>
-                  <i class="ps-2 bi bi-chevron-right text-dark"></i>
-                </div>
-              </div>
-              <hr class="border-dark-subtle mx-2" />
-              <div class="container d-flex justify-content-between">
-                <span>First Name</span>
-                <div class="d-flex align-items-center">
-                  <span
-                    class="pcolor fst-italic fw-light text-truncate"
-                    style="max-width: 200px"
-                  >
-                    Ren
-                  </span>
-                  <i class="ps-2 bi bi-chevron-right text-dark"></i>
-                </div>
-              </div>
-              <hr class="border-dark-subtle mx-2" />
-              <div class="container d-flex justify-content-between">
-                <span>Last Name</span>
-                <div class="d-flex align-items-center">
-                  <span
-                    class="pcolor fst-italic fw-light text-truncate"
-                    style="max-width: 200px"
-                  >
-                    Saiba
-                  </span>
-                  <i class="ps-2 bi bi-chevron-right text-dark"></i>
-                </div>
-              </div>
-              <hr class="border-dark-subtle mx-2" />
-              <div class="container d-flex justify-content-between">
-                <span>Contact No.</span>
-                <div class="d-flex align-items-center">
-                  <span
-                    class="pcolor fst-italic fw-light text-truncate"
-                    style="max-width: 200px"
-                  >
-                    09091234567
-                  </span>
-                  <i class="ps-2 bi bi-chevron-right text-dark"></i>
-                </div>
-              </div>
-              <hr class="border-dark-subtle mx-2" />
-              <div class="container d-flex justify-content-between">
-                <span>Address</span>
-                <div class="d-flex align-items-center">
-                  <span
-                    class="pcolor fst-italic fw-light text-truncate"
-                    style="max-width: 200px"
-                  >
-                    1234 Street, City, Province 1234 PH
-                  </span>
-                  <i class="ps-2 bi bi-chevron-right text-dark"></i>
-                </div>
-              </div>
-              <hr class="border-dark-subtle mx-2" />
-              <div class="container d-flex justify-content-between">
-                <span>Change Password</span>
-                <div class="d-flex align-items-center">
-                  <span
-                    class="pcolor fst-italic fw-light text-truncate"
-                    style="max-width: 200px"
-                  >
-                    ********
-                  </span>
-                  <i class="ps-2 bi bi-chevron-right text-dark"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End of Personal Info Modal -->
 
     <!-- Bottom-Bar -->
     <footer class="fixed-bottom">

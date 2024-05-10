@@ -1,34 +1,32 @@
-import { supabase } from "../main";
+import { supabase, Toastify } from "../main";
 
-// !! functionality for notification
 // Success Notification
-function successNotification(message, seconds = 0) {
-  document.querySelector(".alert-success").classList.remove("d-none");
-  document.querySelector(".alert-success").classList.add("d-block");
-  document.querySelector(".alert-success").innerHTML = message;
-
-  if (seconds != 0) {
-    setTimeout(function () {
-      document.querySelector(".alert-success").classList.remove("d-block");
-      document.querySelector(".alert-success").classList.add("d-none");
-    }, seconds * 1000);
-  }
+function successNotification(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    gravity: "top", // `top` or `bottom`
+    position: "center", // `left`, `center` or `right`
+    style: {
+      background:
+        "linear-gradient(90deg, rgba(0,150,199,1) 25%, rgba(44,168,209,1) 60%, rgba(82,184,217,1) 90%)",
+    },
+  }).showToast();
 }
 
 // Error Notification
-function errorNotification(message, seconds = 0) {
-  document.querySelector(".alert-danger").classList.remove("d-none");
-  document.querySelector(".alert-danger").classList.add("d-block");
-  document.querySelector(".alert-danger").innerHTML = message;
-
-  if (seconds != 0) {
-    setTimeout(function () {
-      document.querySelector(".alert-danger").classList.remove("d-block");
-      document.querySelector(".alert-danger").classList.add("d-none");
-    }, seconds * 1000);
-  }
+function errorNotification(message) {
+  Toastify({
+    text: message,
+    duration: 10000,
+    gravity: "top", // `top` or `bottom`
+    position: "center", // `left`, `center` or `right`
+    style: {
+      background:
+        "linear-gradient(90deg, rgba(187,10,26,1) 15%, rgba(226,37,54,1) 65%, rgba(255,64,81,1) 90%)",
+    },
+  }).showToast();
 }
-// !! end of functionality
 
 const form_login = document.getElementById("form_login");
 
@@ -72,16 +70,22 @@ form_login.onsubmit = async (e) => {
     }
   }
 
-  //   !! notifcation
+  // Check if there's an error with the login process
   if (error == null) {
-    successNotification("Log in successful!", 3);
+    successNotification("Logged in successfully!");
     setTimeout(function () {
-      //!! add timer
+      // Add timer to redirect to the home page
       window.location.pathname = "/index.html";
     }, 3000); // 3000 milliseconds = 3 seconds
   } else {
-    errorNotification("Something went wrong, please try again later.", 10);
-    console.log(error);
+    // Display an error message to the user
+    if (error.status === 400) {
+      errorNotification(
+        "Invalid email or password, or email not confirmed. Please check and try again."
+      );
+    } else {
+      errorNotification("Something went wrong, please try again later.");
+    }
   }
 
   //!! Reset Form
@@ -91,3 +95,5 @@ form_login.onsubmit = async (e) => {
   document.querySelector("#form_login button").disabled = false;
   document.querySelector("#form_login button").innerHTML = `Log in`;
 };
+
+// how about in the error part notification make the grammar suitable upon not logged in. maybe b

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>UwU</title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.js"
+    ></script>
+
+    <link rel="icon" type="image/x-icon" href="./assets/icon/LOGO.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <script
+      type="module"
+      src="./js/system/booking.js
+    "
+    ></script>
+
+    <meta name="theme-color" content="#31d53d" />
+  </head>
+  <body class="gray_bg">
+    <div class="bg-white">
+      <div class="container bg-white">
+        <div class="align-items-center d-flex py-3">
+          <h1 class="modal-title fs-5 flex-grow-1" id="personaInfo">
+            My Bookings
+          </h1>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            onclick="goBack()"
+          ></button>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt-3">
+      <div class="container bg-white shadow-sm rounded-4 pb-3">
+        <h3 class="pt-3">Recent Bookings</h3>
+        <hr class="border-dark-subtle" />
+        <div class="row fw-semibold pt-1">
+          <div class="col-6">Hotel</div>
+          <div class="col-3">Status</div>
+          <div class="col-3">Details</div>
+        </div>
+        <hr class="border-dark-subtle my-2" />
+        <div class="recent-bookings">
+          <!-- Recent bookings will be inserted here -->
+        </div>
+      </div>
+      <br />
+      <div class="container bg-white shadow-sm rounded-4 pb-3">
+        <h3 class="pt-3">Previous Bookings</h3>
+        <hr class="border-dark-subtle" />
+        <div class="row fw-semibold pt-1">
+          <div class="col-6">Hotel</div>
+          <div class="col-3">Status</div>
+          <div class="col-3">Details</div>
+        </div>
+        <hr class="border-dark-subtle my-2" />
+        <div class="previous-bookings">
+          <!-- Previous bookings will be inserted here -->
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</html>
