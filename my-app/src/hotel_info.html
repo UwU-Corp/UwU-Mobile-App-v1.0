@@ -69,9 +69,255 @@
         <div id="hotelIntroContainer"></div>
       </div>
       <!-- End of Hotel Intro -->
-    </div>
 
+      <!-- Booking Details -->
+      <div class="container bg-white shadow-sm rounded-4 mt-3 pt-3 pb-4">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h4 class="pb-2">Booking details</h4>
+            </div>
+          </div>
+          <div class="container border border-secondary-subtle rounded">
+            <div class="row mt-2">
+              <div class="col-1">
+                <div class="fs-1"><i class="bi bi-calendar4"></i></div>
+              </div>
+              <div class="col-4 ms-3 mt-2">
+                <p class="" href="">Dates</p>
+              </div>
+
+              <div class="col mt-1 text-end">
+                <a
+                  id="datesLink"
+                  class="text-decoration-none"
+                  data-bs-toggle="modal"
+                  data-bs-target="#datesModal"
+                >
+                  <!-- The realtime date here and the date after -->
+                </a>
+              </div>
+            </div>
+            <hr class="border-dark-subtle" />
+            <!-- !! row-->
+            <div class="row mt-2">
+              <div class="col-1">
+                <div class="fs-1"><i class="bi bi-people"></i></div>
+              </div>
+              <div class="col-4 ms-3 mt-2">
+                <p class="">Guests</p>
+              </div>
+
+              <div class="col mt-1 text-end">
+                <a
+                  id="guestLink"
+                  class="text-decoration-none"
+                  data-bs-toggle="modal"
+                  data-bs-target="#guestModal"
+                >
+                  2 Adult
+                </a>
+              </div>
+            </div>
+            <hr class="border-dark-subtle" />
+            <!-- !! row-->
+            <div class="row mt-2">
+              <div class="col-1">
+                <div class="fs-1"><i class="bi bi-person"></i></div>
+              </div>
+              <div class="col-4 ms-3 mt-2">
+                <p class="">Booking for</p>
+              </div>
+
+              <div class="col mt-1 text-end">
+                <a id="guestName" class="text-decoration-none"> Guest </a>
+              </div>
+            </div>
+            <!-- ! row-->
+          </div>
+        </div>
+      </div>
+      <!-- End of Booking Details -->
+
+      <!-- Room Selection -->
+      <div class="container bg-white shadow-sm rounded-4 mt-3">
+        <div class="container py-3">
+          <div class="row">
+            <h4 class="pb-2">Select your room</h4>
+          </div>
+          <div id="roomDisplay"></div>
+          <!-- Room Will display here -->
+        </div>
+      </div>
+      <!-- End of Room Selection -->
+
+      <br /><br /><br /><br />
+    </div>
     <!-- End of Hotel Info -->
+
+    <!-- Hotel Book and Pay -->
+    <div class="fixed-bottom">
+      <div class="container-fluid bottom_bar border shadow">
+        <div class="container py-2">
+          <div class="row">
+            <div class="col-md-5 col-5 icon-container2 my-auto bot_bar">
+              <h2 class="fw-bold" id="totalAmount"></h2>
+              <small>Total amount</small>
+            </div>
+            <div class="col-md-7 col-7 my-auto d-grid px-2">
+              <button id="bookNowBtn" type="submit" class="btn btn-1">
+                Book now & pay
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Hotel Book and Pay -->
+
+    <!-- Booking modal for Dates -->
+    <div
+      class="modal fade"
+      id="datesModal"
+      tabindex="-1"
+      aria-labelledby="datesModalLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="datesModalLabel">Select Dates</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Your date selection form can go here -->
+            <form>
+              <div class="mb-3">
+                <label for="checkInDate" class="form-label"
+                  >Check-in Date</label
+                >
+                <input type="date" class="form-control" id="checkInDate" />
+              </div>
+              <div class="mb-3">
+                <label for="checkOutDate" class="form-label"
+                  >Check-out Date</label
+                >
+                <input type="date" class="form-control" id="checkOutDate" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer d-grid">
+            <button type="submit" class="btn btn-1" id="bookingSubmit">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Booking modal for Dates -->
+
+    <!-- Booking modal for Guest -->
+    <div
+      class="modal fade"
+      id="guestModal"
+      tabindex="-1"
+      aria-labelledby="guestModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="guestModalLabel">Number of Guests</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Guest selection form -->
+            <div class="container border rounded">
+              <div class="row mb-3">
+                <label for="adultsCount" class="col-7 col-form-label"
+                  >Adults
+                  <div class="fw-light">Ages 5 or above</div>
+                </label>
+
+                <div class="col mt-3">
+                  <div class="input-group">
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="adultsMinusBtn"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="adultsCount"
+                      value="1"
+                      readonly
+                    />
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="adultsPlusBtn"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="childrenCount" class="col-7 col-form-label"
+                  >Children
+                  <div class="fw-light">Ages 0-4</div>
+                </label>
+                <div class="col mt-3">
+                  <div class="input-group">
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="childrenMinusBtn"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="childrenCount"
+                      value="0"
+                      readonly
+                    />
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="childrenPlusBtn"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer d-grid">
+            <button type="submit" class="btn btn-1" id="bookingSubmitt">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Booking modal for Guest -->
 
     <script>
       // TODO: temporary comment it out, it causes error
