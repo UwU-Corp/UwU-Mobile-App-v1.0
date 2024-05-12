@@ -364,6 +364,11 @@ body {
   width: 100%;
   max-width: 95%;
 }
+
+.modal-footer.d-grid {
+  justify-content: stretch !important;
+}
+
 /* ==== */
 
 /* Bottom Nav Bar */
