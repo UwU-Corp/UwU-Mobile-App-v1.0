@@ -19,7 +19,8 @@ async function getUserInfo() {
       let { data: bookings, error } = await supabase
         .from("booking")
         .select("*, room:room_id(*, hotel:hotel_id(*))")
-        .eq("user_id", user_info[0].id);
+        .eq("user_id", user_info[0].id)
+        .order("id", { ascending: true });
 
       if (error) {
         console.error("Error fetching bookings:", error);
@@ -42,7 +43,8 @@ async function getUserInfo() {
             bookingElement.classList.add(
               "row",
               "align-items-center",
-              "b_details"
+              "b_details",
+              "py-1"
             );
             let statusClass = "";
             switch (booking.status) {
@@ -84,7 +86,8 @@ async function getUserInfo() {
             bookingElement.classList.add(
               "row",
               "align-items-center",
-              "b_details"
+              "b_details",
+              "py-1"
             );
             let statusClass = "";
             switch (booking.status) {

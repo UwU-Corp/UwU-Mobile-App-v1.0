@@ -196,3 +196,51 @@ submitButton.addEventListener("click", (event) => {
 });
 
 // ============================================
+
+// Get the hotel ID from the URL
+let hotelId = getHotelIdFromUrl();
+
+// Call the function with the hotel ID
+getRoomIdFromHotelId(hotelId).then((roomIds) => console.log(roomIds));
+
+// Function to get the room IDs from the database using the hotel ID
+async function getRoomIdFromHotelId(hotelId) {
+  // Fetch the room data from the database using the hotel ID
+  let { data: rooms, error } = await supabase
+    .from("room")
+    .select("id")
+    .eq("hotel_id", hotelId);
+
+  if (error) {
+    console.error("Error fetching room data:", error);
+    return null;
+  }
+
+  // Get the room IDs from the fetched data
+  let roomIds = rooms.map((room) => room.id);
+
+  return roomIds;
+}
+
+// Function to get the selected room ID
+function getSelectedRoomId() {
+  // Get the checked radio button
+  let selectedRadioButton = document.querySelector(
+    'input[name="flexRadioDefault"]:checked'
+  );
+
+  // Check if a radio button is selected
+  if (selectedRadioButton) {
+    // Get the parent element of the radio button
+    let parentElement = selectedRadioButton.parentElement.parentElement;
+
+    // Get the room ID from the parent element
+    let roomId = parentElement.getAttribute("data-room-id");
+
+    return roomId;
+  } else {
+    // No radio button is selected
+    console.error("No room is selected.");
+    return null;
+  }
+}
