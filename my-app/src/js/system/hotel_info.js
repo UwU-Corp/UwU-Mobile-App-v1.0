@@ -4,11 +4,12 @@ import {
   hotelImageUrl,
   roomImageUrl,
   generateStarRating,
+  Toastify,
 } from "../main";
 
 import mapIcon from "../../assets/icon/location.svg";
 
-// Call the function to update the hotel info
+// Call the function
 getHotelInfo();
 getRoomInfo();
 getUserInfo();
@@ -55,6 +56,7 @@ async function getHotelInfo() {
   }
 }
 
+// Function to display the hotel intro
 function displayHotelIntro(hotelData) {
   // Destructure the hotelData object to get the necessary fields
   const { hotel_name, hotel_rate, no_reviews, hotel_location } = hotelData;
@@ -146,6 +148,33 @@ function generateCarousel(hotelImages) {
   }, 1000); // Adjust the delay as needed
 }
 
+// Get the user's information
+async function getUserInfo() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user != null) {
+    let { data: user_info, error } = await supabase
+      .from("user_info")
+      .select("*")
+      .eq("user_id", user.id);
+
+    if (error) {
+      console.error("Error fetching user info:", error);
+    } else if (user_info && user_info.length > 0) {
+      // Use querySelector to select the guestName element and set its text
+      document.querySelector("#guestName").textContent =
+        user_info[0].first_name;
+    } else {
+      console.log("No user info found");
+    }
+  } else {
+    console.log("No user is currently logged in.");
+  }
+}
+
+// Function to get room data and update the page
 async function getRoomInfo() {
   const hotelId = getHotelIdFromUrl();
 
@@ -195,92 +224,80 @@ async function displayRoomInfo(rooms, roomImages) {
 
     // Create the room HTML
     let roomHTML = `
-          <div class="d-flex align-items-center room-row" data-room-id="${
+    <div class="d-flex align-items-center room-row" data-room-id="${room.id}">
+      <div class="flex-shrink-0 hm_img_r">
+        ${imagesHTML}
+      </div>
+      <div class="flex-grow-1 ms-3">
+          <p class="fw-medium mt-3">
+              ${escapeHTML(room.room_type)},<br />
+              ${escapeHTML(room.room_bed)} <br />
+              <small class="font-monospace hm_gray">${escapeHTML(
+                room.room_size
+              )}</small>
+          </p>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault${
             room.id
-          }">
-            <div class="flex-shrink-0 hm_img_r">
-              ${imagesHTML}
-            </div>
-            <div class="flex-grow-1 ms-3">
-                <p class="fw-medium mt-3">
-                    ${escapeHTML(room.room_type)},<br />
-                    ${escapeHTML(room.room_bed)} <br />
-                    <small class="font-monospace hm_gray">${escapeHTML(
-                      room.room_size
-                    )}</small>
-                </p>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault${
-                  room.id
-                }" value="${room.room_price}" ${index === 0 ? "checked" : ""} />
-                <label class="form-check-label" for="flexRadioDefault${
-                  room.id
-                }"> </label>
-            </div>
-          </div>`;
+          }" value="${room.room_price}" ${index === 0 ? "checked" : ""} />
+          <label class="form-check-label" for="flexRadioDefault${
+            room.id
+          }"> </label>
+      </div>
+    </div>`;
 
     // If it's not the last room, add the <hr> tag
     if (index !== rooms.length - 1) {
       roomHTML += `<hr class="border-dark-subtle" />`;
     }
 
-    // Insert the room HTML into the container
-    container.innerHTML += roomHTML;
+    // Create a new div element
+    let div = document.createElement("div");
+
+    // Set the inner HTML of the div element
+    div.innerHTML = roomHTML;
+
+    // Append the div element to the container
+    container.appendChild(div);
   });
 
   // Add click event listeners to the rows
   document.querySelectorAll(".room-row").forEach((row) => {
     row.addEventListener("click", () => {
-      const roomId = row.getAttribute("data-room-id");
-      const radioButton = document.querySelector(`#flexRadioDefault${roomId}`);
+      selectedRoomId = row.getAttribute("data-room-id");
+      const radioButton = document.querySelector(
+        `#flexRadioDefault${selectedRoomId}`
+      );
+      console.log(
+        `Clicked on room with ID ${selectedRoomId}, radio button:`,
+        radioButton
+      );
       radioButton.click();
-      document.querySelector("#totalAmount").textContent =
-        "₱" + Number(radioButton.value).toLocaleString();
+      console.log("After clicking radio button:", radioButton);
+      // Call the calculateTotalPrice function to update the total price
+      calculateTotalPrice();
     });
   });
+
+  // Get the first .room-row element
+  let firstRoomRow = document.querySelector(".room-row");
+
+  if (firstRoomRow) {
+    // Set selectedRoomId to the data-room-id attribute of the first .room-row element
+    selectedRoomId = firstRoomRow.getAttribute("data-room-id");
+  }
+
+  console.log("selectedRoomId:", selectedRoomId);
+  let selector = `#flexRadioDefault${selectedRoomId}`;
+  console.log("selector:", selector);
+  let roomPriceElement = document.querySelector(selector);
+  console.log("roomPriceElement:", roomPriceElement);
 
   // Display the price of the first room
   if (rooms.length > 0) {
     document.querySelector("#totalAmount").textContent =
       "₱" + Number(rooms[0].room_price).toLocaleString();
-  }
-
-  // Assume these are your base prices
-  let adultPrice = 100;
-  let childPrice = 50;
-
-  // Get the inputs
-  let checkInDateInput = document.querySelector("#checkInDate");
-  let checkOutDateInput = document.querySelector("#checkOutDate");
-  let adultsCountInput = document.querySelector("#adultsCount");
-  let childrenCountInput = document.querySelector("#childrenCount");
-
-  // Function to calculate the total price
-  function calculateTotalPrice() {
-    // Get the selected room price
-    let roomPrice = document.querySelector(
-      'input[name="flexRadioDefault"]:checked'
-    ).value;
-
-    // Get the number of nights
-    let checkInDate = new Date(checkInDateInput.value);
-    let checkOutDate = new Date(checkOutDateInput.value);
-    let nights = Math.round(
-      (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24)
-    );
-
-    // Get the number of adults and children
-    let adults = Number(adultsCountInput.value);
-    let children = Number(childrenCountInput.value);
-
-    // Calculate the total price
-    let totalPrice =
-      roomPrice * nights + adults * adultPrice + children * childPrice;
-
-    // Update the total price display
-    document.querySelector("#totalAmount").textContent =
-      "₱" + Number(totalPrice).toLocaleString();
   }
 
   // Add event listeners to the inputs
@@ -308,6 +325,176 @@ async function displayRoomInfo(rooms, roomImages) {
   calculateTotalPrice();
 }
 
+// Assume these are base prices
+let adultPrice = 200;
+let childPrice = 100;
+
+// Get the inputs
+let checkInDateInput = document.querySelector("#checkInDate");
+let checkOutDateInput = document.querySelector("#checkOutDate");
+let adultsCountInput = document.querySelector("#adultsCount");
+let childrenCountInput = document.querySelector("#childrenCount");
+
+// Function to calculate the total price
+function calculateTotalPrice() {
+  // Get the selected room price
+  let roomPriceElement = document.querySelector(
+    'input[name="flexRadioDefault"]:checked'
+  );
+  console.log("In calculateTotalPrice, roomPriceElement:", roomPriceElement);
+  let roomPrice = roomPriceElement ? roomPriceElement.value : 0;
+
+  // Get the number of nights
+  let checkInDate = new Date(checkInDateInput.value);
+  let checkOutDate = new Date(checkOutDateInput.value);
+  let nights = Math.round((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24));
+
+  // Get the number of adults and children
+  let adults = Number(adultsCountInput.value);
+  let children = Number(childrenCountInput.value);
+
+  // Calculate the total price
+  let totalPrice = roomPrice * nights + children * childPrice;
+
+  // If there are more than 2 adults, add the extra adult price
+  if (adults > 2) {
+    totalPrice += (adults - 2) * adultPrice;
+  }
+
+  // Update the total price display
+  document.querySelector("#totalAmount").textContent =
+    "₱" + Number(totalPrice).toLocaleString();
+
+  // Return the total price
+  return totalPrice;
+}
+
+// Declare a global variable to store the selected room ID
+let selectedRoomId = null;
+
+// Function to book a hotel
+async function bookHotel() {
+  console.log("Starting bookHotel function");
+
+  // Get the user's information
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  console.log("User:", user);
+
+  if (user != null) {
+    let { data: user_info, error: user_info_error } = await supabase
+      .from("user_info")
+      .select("*")
+      .eq("user_id", user.id);
+
+    if (user_info_error) {
+      console.error("Error retrieving user info:", user_info_error);
+      return;
+    }
+
+    if (!user_info || user_info.length === 0) {
+      console.error("No user info found for user:", user.id);
+      return;
+    }
+
+    console.log("User info:", user_info[0]);
+
+    // Get the selected dates
+    let checkInDate = new Date(document.querySelector("#checkInDate").value);
+    let checkOutDate = new Date(document.querySelector("#checkOutDate").value);
+    console.log("Check-in date:", checkInDate);
+    console.log("Check-out date:", checkOutDate);
+
+    // Get the selected number of adults and children
+    let adults = document.querySelector("#adultsCount").value;
+    let children = document.querySelector("#childrenCount").value;
+    console.log("Number of adults:", adults);
+    console.log("Number of children:", children);
+
+    if (!selectedRoomId) {
+      console.error("No room selected");
+      return; // Exit the function if no room is selected
+    }
+
+    let roomPriceElement = document.querySelector(
+      `#flexRadioDefault${selectedRoomId}`
+    );
+    console.log("Room price element:", roomPriceElement);
+
+    let totalPayment;
+    let roomId;
+    if (roomPriceElement) {
+      totalPayment = calculateTotalPrice();
+      roomId = roomPriceElement.id.replace("flexRadioDefault", ""); // Get the room id from the radio button's id
+      console.log("Total payment:", totalPayment);
+      console.log("Room ID:", roomId);
+    } else {
+      console.log("No room selected");
+      return; // Exit the function if no room is selected
+    }
+
+    // Create the booking data
+    let bookingData = {
+      user_id: user_info[0].id,
+      room_id: roomId,
+      check_in: checkInDate,
+      check_out: checkOutDate,
+      adult_quantity: adults,
+      child_quantity: children,
+      payment: totalPayment,
+      status: "In Process",
+    };
+    console.log("Booking data:", bookingData);
+
+    // Insert the booking data into the database
+    let { data: booking, error: booking_error } = await supabase
+      .from("booking")
+      .insert([bookingData]);
+
+    if (booking_error) {
+      console.error("Error booking hotel:", booking_error);
+      // Show a toast notification for the error
+      Toastify({
+        text: "Error booking hotel: " + booking_error.message,
+        duration: 10000,
+        gravity: "top", // `top` or `bottom`
+        position: "center",
+        style: {
+          background:
+            "linear-gradient(90deg, rgba(187,10,26,1) 15%, rgba(226,37,54,1) 65%, rgba(255,64,81,1) 90%)",
+        },
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+      }).showToast();
+    } else {
+      console.log("Hotel booked successfully:", booking);
+      // Show a toast notification for the success
+      Toastify({
+        text: "Hotel booked successfully",
+        duration: 10000,
+        gravity: "top", // `top` or `bottom`
+        position: "center",
+        style: {
+          background:
+            "linear-gradient(90deg, rgba(0,150,199,1) 25%, rgba(44,168,209,1) 60%, rgba(82,184,217,1) 90%)",
+        },
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+      }).showToast();
+    }
+  } else {
+    console.log("No user is currently logged in.");
+    window.location.href = "login.html";
+    return;
+  }
+}
+
+// Assuming 'bookNowBtn' is the id of your booking button
+document.getElementById("bookNowBtn").addEventListener("click", function () {
+  // Call the bookHotel function when the button is clicked
+  bookHotel();
+});
+
+// Function to display the booking details
 function bookingDetails() {
   // Get the current date and the date for the next day
   let currentDate = new Date();
@@ -454,82 +641,3 @@ function escapeHTML(text) {
   div.textContent = text;
   return div.innerHTML;
 }
-
-// Get the user's information
-async function getUserInfo() {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (user != null) {
-    let { data: user_info, error } = await supabase
-      .from("user_info")
-      .select("*")
-      .eq("user_id", user.id);
-
-    if (error) {
-      console.error("Error fetching user info:", error);
-    } else if (user_info && user_info.length > 0) {
-      // Use querySelector to select the guestName element and set its text
-      document.querySelector("#guestName").textContent =
-        user_info[0].first_name;
-    } else {
-      console.log("No user info found");
-    }
-  } else {
-    console.log("No user is currently logged in.");
-  }
-}
-
-// Function to book a hotel
-async function bookHotel() {
-  // Get the user's information
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (user != null) {
-    // Get the hotel ID
-    const hotelId = getHotelIdFromUrl();
-
-    // Get the selected dates
-    let checkInDate = new Date(document.querySelector("#checkInDate").value);
-    let checkOutDate = new Date(document.querySelector("#checkOutDate").value);
-
-    // Get the selected number of adults and children
-    let adults = document.querySelector("#adultsCount").value;
-    let children = document.querySelector("#childrenCount").value;
-
-    // Create the booking data
-    let bookingData = {
-      user_id: user.id,
-      hotel_id: hotelId,
-      check_in_date: checkInDate,
-      check_out_date: checkOutDate,
-      adults: adults,
-      children: children,
-    };
-
-    // Insert the booking data into the database
-    let { data: booking, error } = await supabase
-      .from("booking")
-      .insert([bookingData]);
-
-    if (error) {
-      console.error("Error booking hotel:", error);
-    } else {
-      console.log("Hotel booked successfully:", booking);
-    }
-  } else {
-    console.log("No user is currently logged in.");
-  }
-}
-
-// // Fetch the user's information from the server
-// // This is a placeholder and should be replaced with your actual code to fetch the user's information
-// let user = await fetchUserFromServer();
-
-// // If the user is logged in, display their name. Otherwise, display "Guest".
-// document.querySelector("#guestNameLink").textContent = user
-//   ? user.name
-//   : "Guest";
