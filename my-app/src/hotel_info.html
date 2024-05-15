@@ -151,40 +151,25 @@
       </div>
       <!-- End of Room Selection -->
 
-      <!-- Ratings & Reviews -->
+      <!-- Reviews -->
       <div class="container bg-white shadow-sm rounded-4 mt-3">
         <div class="container py-3">
           <div class="row">
-            <div class="col">
-              <h4 class="pb-2" id="RatingsSection">Ratings & reviews</h4>
-            </div>
+            <h4>Reviews</h4>
           </div>
-          <!-- !! row -->
-          <div class="row">
-            <div class="col-8">
-              <div class="fs-2 hm_card">
-                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
-                ><i class="bi bi-star"></i>
-              </div>
-            </div>
-            <div class="col-4">
-              <h1 class="fw-bold">4.3</h1>
-            </div>
-          </div>
-          <!-- !! row -->
-          <div class="row pt-1">
-            <div class="col-8">
-              <p class="fw-medium">
-                <span class="bg-secondary-subtle rounded px-2">Excellent</span>
+          <div class="d-flex align-items-center hm_reviews">
+            <span class="pe-4"
+              ><strong id="hRate"></strong><small>/5</small></span
+            >
+            <div class="d-flex flex-column">
+              <h6 class="pt-4 mb-0 pb-0" id="reviewText"></h6>
+              <p>
+                <small id="reviewCount"></small
+                ><i class="ps-2 bi bi-chevron-right"></i>
               </p>
             </div>
-            <div class="col-4">
-              <p class="fw-medium">105 ratings</p>
-            </div>
           </div>
-          <hr class="border-dark-subtle" />
-          <div class="hm_progress py-1">
+          <div class="hm_progress">
             <div class="hm_progress">
               <span>Cleanliness</span>
             </div>
@@ -263,10 +248,165 @@
           </div>
         </div>
       </div>
+      <!-- End of Reviews -->
 
-      <br /><br /><br /><br />
+      <!-- Amenities -->
+      <div class="container bg-white shadow-sm rounded-4 mt-3">
+        <div class="container py-3">
+          <div class="row">
+            <h4 class="pb-2">Amenities</h4>
+            <div class="d-flex pt-2">
+              <span class="material-symbols-outlined"> wifi </span>
+              <h6 class="mt-1 ps-2 fw-light">Wi-Fi in Public Areas</h6>
+            </div>
+            <div class="d-flex pt-2">
+              <span class="material-symbols-outlined"> pool </span>
+              <h6 class="mt-1 ps-2 fw-light">Outdoor Swimming Pool</h6>
+            </div>
+            <div class="d-flex pt-2">
+              <span class="material-symbols-outlined"> fastfood </span>
+              <h6 class="mt-1 ps-2 fw-light">Food & Drink</h6>
+            </div>
+            <div class="d-flex pt-2">
+              <span class="material-symbols-outlined"> restaurant </span>
+              <h6 class="mt-1 ps-2 fw-light">Restaurant</h6>
+            </div>
+            <div class="d-flex pt-2">
+              <span class="material-symbols-outlined"> local_parking </span>
+              <h6 class="mt-1 ps-2 fw-light">Parking</h6>
+            </div>
+
+            <div class="collapse" id="hiddenText">
+              <div class="d-flex pt-2">
+                <span class="material-symbols-outlined"> directions_bus </span>
+                <h6 class="mt-1 ps-2 fw-light">Transportation</h6>
+              </div>
+              <div class="d-flex pt-2">
+                <span class="material-symbols-outlined"> business_center </span>
+                <h6 class="mt-1 ps-2 fw-light">Business Center</h6>
+              </div>
+              <div class="d-flex pt-2">
+                <span class="material-symbols-outlined"> computer </span>
+                <h6 class="mt-1 ps-2 fw-light">Front Desk</h6>
+              </div>
+              <div class="d-flex pt-2">
+                <span class="material-symbols-outlined"> atm </span>
+                <h6 class="mt-1 ps-2 fw-light">ATM</h6>
+              </div>
+              <div class="d-flex pt-2">
+                <span class="material-symbols-outlined"> local_cafe </span>
+                <h6 class="mt-1 ps-2 fw-light">Cafe</h6>
+              </div>
+              <div class="d-flex pt-2">
+                <span class="material-symbols-outlined"> local_bar </span>
+                <h6 class="mt-1 ps-2 fw-light">Bar</h6>
+              </div>
+            </div>
+            <button
+              class="btn show-more mx-auto"
+              type="button"
+              onclick="toggleAmenities()"
+            >
+              Show All
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- End of Amenities -->
+
+      <!-- Hotel Description -->
+      <div class="container bg-white shadow-sm rounded-4 mt-3">
+        <div class="container py-3">
+          <div class="row">
+            <div class="col">
+              <h4>Hotel Description</h4>
+            </div>
+          </div>
+          <div class="row pt-2">
+            <div class="col">
+              <div class="about_section">
+                <p id="hotelDesc" class="show-more"></p>
+                <div class="d-flex justify-content-center">
+                  <button id="toggleButton" type="button" class="btn show-more">
+                    Show All
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Hotel Description -->
+
+      <!-- Cancellation  -->
+      <div class="container bg-white shadow-sm rounded-4 mt-3">
+        <div class="container py-3">
+          <h4>Cancellation policy</h4>
+          <div class="row pt-2">
+            <div class="col-1">
+              <p class="fs-1 bg-green text-success">
+                <i class="bi bi-check2-circle"></i>
+              </p>
+            </div>
+            <div class="col-11">
+              <p class="ps-1 mt-1 pt-2 fw-medium text-success">
+                Free cancellation till 21 March, 9:00 am
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1">
+              <p class="fs-1 bg-green text-danger">
+                <span class="material-symbols-outlined"> lock </span>
+              </p>
+            </div>
+            <div class="col-11">
+              <p class="ps-1 mt-1 pt-2 fw-medium text-danger">
+                No refund till 21 March, 9:00 am
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Cancellation -->
+
+      <!-- Rules & Restrictions -->
+      <div class="container bg-white shadow-sm rounded-4 mt-3">
+        <div class="container py-3">
+          <h4 class="pb-2">Rules & restrictions</h4>
+          <ul class="fw-light">
+            <li>
+              This property accommodates quarantine booking only. Leisure stays
+              will not accommodated
+            </li>
+            <li>Couples are welcome</li>
+            <li>
+              Guests can check in using any Domestic or International Id proof
+              with photograph
+            </li>
+          </ul>
+          <a
+            class="text-decoration-none"
+            data-bs-toggle="modal"
+            data-bs-target="#rulesModal"
+            >View guest policy
+          </a>
+        </div>
+      </div>
+      <!-- End of Rules & Restrictions -->
     </div>
     <!-- End of Hotel Info -->
+
+    <!-- Recommended -->
+    <div class="container mb-1">
+      <h4 class="py-3">Recommended</h4>
+      <div class="scrolling-wrapper grid gap-4" id="recommended">
+        <!-- get random recommended hotels -->
+      </div>
+    </div>
+    <!-- End of Recommended -->
+
+    <br /><br /><br /><br />
 
     <!-- Hotel Book and Pay -->
     <div class="fixed-bottom">
@@ -288,7 +428,7 @@
     </div>
     <!-- End of Hotel Book and Pay -->
 
-    <!-- Booking modal for Dates -->
+    <!-- Booking Modal for Dates -->
     <div
       class="modal fade"
       id="datesModal"
@@ -333,9 +473,9 @@
         </div>
       </div>
     </div>
-    <!-- End of Booking modal for Dates -->
+    <!-- End of Booking Modal for Dates -->
 
-    <!-- Booking modal for Guest -->
+    <!-- Booking Modal for Guest -->
     <div
       class="modal fade"
       id="guestModal"
@@ -430,84 +570,124 @@
         </div>
       </div>
     </div>
-    <!-- End of Booking modal for Guest -->
+    <!-- End of Booking Modal for Guest -->
+
+    <!-- Modal for Map -->
+    <div
+      class="modal fade"
+      id="mapModal"
+      tabindex="-1"
+      aria-labelledby="mapModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="mapModalLabel">Map</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Embedded map -->
+            <div class="container-fluid p-0">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.1566539281555!2d125.52952385019555!3d8.951006218031933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMHTCsDU4JzIwLjEiTiAxMjXCsDA0JzEwLjkiRQ!5e0!3m2!1sen!2sph!4v1647804203052!5m2!1sen!2sph"
+                width="100%"
+                height="600px"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Modal for Map -->
+
+    <!-- Modal for Rules -->
+    <div
+      class="modal fade"
+      id="rulesModal"
+      tabindex="-1"
+      aria-labelledby="rulesModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fs-5" id="rulesModalLabel">
+              Guest Policies
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container border rounded pb-4 pt-3 mb-3">
+              <h1 class="fw-bold pb-3">General Terms and Conditions</h1>
+              <ul class="fw-light">
+                <li>
+                  The primary guest must be above the age of 18 years to be able
+                  to check-in the hotel.
+                </li>
+                <li>
+                  Stay of 2 child-up to the age of 12 years is complimentary
+                  without the use of an extra bed. (Sharing beds with Adults)
+                </li>
+                <li>Pets are not allowed in the Hotel premises</li>
+                <li>
+                  A discounted booking cannot be modified, Additionally, in the
+                  case of an early check-out for such a booking, the booking
+                  amount paid cannot be refunded
+                </li>
+                <li>
+                  Our Hotels in certain destinations may have different policies
+                  applicable for specific times during this year.
+                </li>
+                <li>
+                  Extra mattress will be provided subject to availability and
+                  maximum occupancy of the room booked.
+                </li>
+                <li>
+                  UwU Philippines is a young hotel startup in the Philippines
+                  that started operations in 2019. We are committed to provide
+                  quality living spaces for millions of middle-income people
+                  through a network of partner hotels in the Philippines and
+                  across the world.
+                </li>
+                <li>
+                  As we continue to strive to improve our services, OYO may
+                  reach out to guests to get a feedback of their experience
+                  through calls or messages
+                </li>
+                <li>
+                  As a hospitability company, that has invested significantly in
+                  Technology, UwU Philippines is focusedon its core business of
+                  redefining the fragmented hospitality sector by empowering
+                  individual assets partners with its successfuk proposition of
+                  combining design, hospitality, technological expertise,
+                  revenue management and operational capabilities, thereby
+                  enabling them to succeed in this competitive space by
+                  consistently adding more and more guests, with higher revenue
+                  and yields
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Modal for Rules -->
 
     <script>
-      // TODO: temporary comment it out, it causes error
-      // // Counter for number of guest
-      // document
-      //   .getElementById("adultsMinusBtn")
-      //   .addEventListener("click", function () {
-      //     var adultsCount = document.getElementById("adultsCount");
-      //     var count = parseInt(adultsCount.value);
-      //     if (count > 1) {
-      //       adultsCount.value = count - 1;
-      //     }
-      //   });
-
-      // document
-      //   .getElementById("adultsPlusBtn")
-      //   .addEventListener("click", function () {
-      //     var adultsCount = document.getElementById("adultsCount");
-      //     var count = parseInt(adultsCount.value);
-      //     adultsCount.value = count + 1;
-      //   });
-
-      // document
-      //   .getElementById("childrenMinusBtn")
-      //   .addEventListener("click", function () {
-      //     var childrenCount = document.getElementById("childrenCount");
-      //     var count = parseInt(childrenCount.value);
-      //     if (count > 0) {
-      //       childrenCount.value = count - 1;
-      //     }
-      //   });
-
-      // document
-      //   .getElementById("childrenPlusBtn")
-      //   .addEventListener("click", function () {
-      //     var childrenCount = document.getElementById("childrenCount");
-      //     var count = parseInt(childrenCount.value);
-      //     childrenCount.value = count + 1;
-      //   });
-
-      // for view more interaction
-      function toggleDescription() {
-        var additionalDescription = document.getElementById(
-          "additionalDescription"
-        );
-
-        var viewMoreBtn = document.getElementById("viewMoreBtn");
-
-        // Toggle visibility of additional description
-        additionalDescription.classList.toggle("show");
-
-        // Toggle text truncation of hotel description
-
-        // Toggle text of View More button
-        if (additionalDescription.classList.contains("show")) {
-          viewMoreBtn.innerText = "View Less";
-        } else {
-          viewMoreBtn.innerText = "View More";
-        }
-      }
-
-      function toggleReviews(reviewNumber) {
-        var review = document.getElementById("review" + reviewNumber);
-        var viewMoreBtn = document.getElementById("viewMoreBtn" + reviewNumber);
-
-        // Toggle text truncation of review
-        review.classList.toggle("text-truncate");
-
-        // Toggle text of View More button
-        if (review.classList.contains("text-truncate")) {
-          viewMoreBtn.innerText = "View More";
-        } else {
-          viewMoreBtn.innerText = "View Less";
-        }
-      }
-
-      // Amenities
       function toggleAmenities() {
         var hiddenText = document.getElementById("hiddenText");
         var button = document.querySelector(".show-more");
@@ -520,25 +700,10 @@
           button.innerHTML = "Show Less";
         } else {
           hiddenText.style.display = "none";
-          button.innerHTML = "Show More";
+          button.innerHTML = "Show All";
         }
       }
 
-      // function toggleHiddenRows() {
-      //   var hiddenRows = document.querySelectorAll(".hiddenRow");
-      //   hiddenRows.forEach(function (row) {
-      //     if (row.style.display === "none") {
-      //       row.style.display = "flex";
-      //       document.getElementById("toggleButton").innerText = "View Less";
-      //     } else {
-      //       row.style.display = "none";
-      //       document.getElementById("toggleButton").innerText =
-      //         "View all 22 amenities";
-      //     }
-      //   });
-      // }
-
-      //!! for button back
       function goBack() {
         window.history.back();
       }
