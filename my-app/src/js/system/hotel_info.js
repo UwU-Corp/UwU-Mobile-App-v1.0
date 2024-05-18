@@ -66,6 +66,7 @@ function displayHotelInfo(hotelData) {
     hotel_location,
     hotel_desc,
     map,
+    link_reviews,
   } = hotelData;
 
   // Generate the stars HTML
@@ -101,12 +102,24 @@ function displayHotelInfo(hotelData) {
   const hotelIntroContainer = document.querySelector("#hotelIntroContainer");
   hotelIntroContainer.innerHTML = hotelIntroHTML;
 
+  // Select the link that points to the RatingsSection
+  let ratingsLink = document.querySelector('a[href="#RatingsSection"]');
+
+  // Add an event listener to the link
+  ratingsLink.addEventListener("click", function (event) {
+    // Prevent the default action of the link
+    event.preventDefault();
+
+    // Select the RatingsSection element
+    let ratingsSection = document.querySelector("#RatingsSection");
+
+    // Scroll to the RatingsSection
+    ratingsSection.scrollIntoView({ behavior: "smooth" });
+  });
+
   // Map Section
-
   let mapIframe = document.querySelector("#mapModal iframe");
-
-  // Update the src attribute
-  mapIframe.src = map; // replace with actual value
+  mapIframe.src = map;
 
   // Review section
   function mapRatingToText(rating) {
@@ -124,10 +137,12 @@ function displayHotelInfo(hotelData) {
   let hRate = document.querySelector("#hRate");
   let reviewCount = document.querySelector("#reviewCount");
   let reviewText = document.querySelector("#reviewText");
+  let linkReviews = document.querySelector("#linkReviews");
 
   hRate.textContent = hotel_rate;
   reviewCount.textContent = `${no_reviews} reviews`;
   reviewText.textContent = mapRatingToText(hotel_rate);
+  linkReviews.href = link_reviews;
 
   // Hotel Description Section
   let hotelDesc = document.querySelector("#hotelDesc");
@@ -140,21 +155,31 @@ function displayHotelInfo(hotelData) {
   let truncatedDesc = hotel_desc.substring(0, midpoint) + "...";
   let fullDesc = hotel_desc;
 
-  // Initially set the textContent to the truncated description
-  hotelDesc.textContent = truncatedDesc;
+  // Replace newline characters with <br> tags in the full and truncated descriptions
+  truncatedDesc = truncatedDesc.replace(/\n/g, "<br>");
+  fullDesc = fullDesc.replace(/\n/g, "<br>");
+
+  // Initially set the innerHTML to the truncated description
+  hotelDesc.innerHTML = truncatedDesc;
+
+  // Add a flag to track whether the description is currently truncated
+  let isTruncated = true;
 
   // Add an event listener to the button
   toggleButton.addEventListener("click", function () {
     // Check if the text is currently truncated
-    if (hotelDesc.textContent === truncatedDesc) {
+    if (isTruncated) {
       // If it is, show the full description and update the button text
-      hotelDesc.textContent = fullDesc;
+      hotelDesc.innerHTML = fullDesc;
       toggleButton.textContent = "Show Less";
     } else {
       // If it's not, show the truncated description and update the button text
-      hotelDesc.textContent = truncatedDesc;
+      hotelDesc.innerHTML = truncatedDesc;
       toggleButton.textContent = "Show All";
     }
+
+    // Toggle the isTruncated flag
+    isTruncated = !isTruncated;
   });
 }
 
@@ -200,15 +225,15 @@ function generateCarousel(hotelImages) {
   });
 
   // Update the carousel inner HTML and the carousel indicators HTML
-  // carouselInner.innerHTML = carouselItems;
-  // carouselIndicators.innerHTML = carouselIndicatorsHtml;
+  carouselInner.innerHTML = carouselItems;
+  carouselIndicators.innerHTML = carouselIndicatorsHtml;
 
   // Use setTimeout to simulate the loading time TODO: To set the loading time if using the placeholder
-  setTimeout(() => {
-    // Update the carousel inner HTML and the carousel indicators HTML
-    carouselInner.innerHTML = carouselItems;
-    carouselIndicators.innerHTML = carouselIndicatorsHtml;
-  }, 1000); // Adjust the delay as needed
+  // setTimeout(() => {
+  //   // Update the carousel inner HTML and the carousel indicators HTML
+  //   carouselInner.innerHTML = carouselItems;
+  //   carouselIndicators.innerHTML = carouselIndicatorsHtml;
+  // }, 1000); // Adjust the delay as needed
 }
 
 // Get the user's information

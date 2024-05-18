@@ -39,7 +39,7 @@
 
     <meta name="theme-color" content="#31d53d" />
   </head>
-  <body>
+  <body class="gray_bg">
     <!-- Back button -->
     <div class="container btn_hotel">
       <button
@@ -63,7 +63,7 @@
     <!-- End of Hotel carousel -->
 
     <!-- Hotel Info -->
-    <div class="container-fluid gray_bg py-3">
+    <div class="container-fluid bg_gradient py-3">
       <!-- Hotel Intro -->
       <div class="container bg-white shadow-sm rounded-4">
         <div id="hotelIntroContainer"></div>
@@ -138,9 +138,10 @@
         </div>
       </div>
       <!-- End of Booking Details -->
-
+    </div>
+    <div class="container-fluid">
       <!-- Room Selection -->
-      <div class="container bg-white shadow-sm rounded-4 mt-3">
+      <div class="container bg-white shadow-sm rounded-4">
         <div class="container py-3">
           <div class="row">
             <h4 class="pb-2">Select your room</h4>
@@ -152,7 +153,10 @@
       <!-- End of Room Selection -->
 
       <!-- Reviews -->
-      <div class="container bg-white shadow-sm rounded-4 mt-3">
+      <div
+        class="container bg-white shadow-sm rounded-4 mt-3"
+        id="RatingsSection"
+      >
         <div class="container py-3">
           <div class="row">
             <h4>Reviews</h4>
@@ -161,13 +165,15 @@
             <span class="pe-4"
               ><strong id="hRate"></strong><small>/5</small></span
             >
-            <div class="d-flex flex-column">
-              <h6 class="pt-4 mb-0 pb-0" id="reviewText"></h6>
-              <p>
-                <small id="reviewCount"></small
-                ><i class="ps-2 bi bi-chevron-right"></i>
-              </p>
-            </div>
+            <a id="linkReviews" href="">
+              <div class="d-flex flex-column">
+                <h6 class="pt-4 mb-0 pb-0" id="reviewText"></h6>
+                <p>
+                  <small id="reviewCount"></small
+                  ><i class="ps-2 bi bi-chevron-right"></i>
+                </p>
+              </div>
+            </a>
           </div>
           <div class="hm_progress">
             <div class="hm_progress">
@@ -398,7 +404,7 @@
     <!-- End of Hotel Info -->
 
     <!-- Recommended -->
-    <div class="container mb-1">
+    <div class="container mb-1 bg-white pb-5 mt-3">
       <h4 class="py-3">Recommended</h4>
       <div class="scrolling-wrapper grid gap-4" id="recommended">
         <!-- get random recommended hotels -->
@@ -406,7 +412,7 @@
     </div>
     <!-- End of Recommended -->
 
-    <br /><br /><br /><br />
+    <br /><br />
 
     <!-- Hotel Book and Pay -->
     <div class="fixed-bottom">
@@ -595,7 +601,7 @@
             <!-- Embedded map -->
             <div class="container-fluid p-0">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.1566539281555!2d125.52952385019555!3d8.951006218031933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMHTCsDU4JzIwLjEiTiAxMjXCsDA0JzEwLjkiRQ!5e0!3m2!1sen!2sph!4v1647804203052!5m2!1sen!2sph"
+                src=""
                 width="100%"
                 height="600px"
                 style="border: 0"
