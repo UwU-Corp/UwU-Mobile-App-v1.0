@@ -53,14 +53,14 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid mt-3">
+    <div class="container-fluid pt-3">
       <div class="container bg-white shadow-sm rounded-4 pb-3">
         <h3 class="pt-3">Recent Bookings</h3>
         <hr class="border-dark-subtle" />
         <div class="row fw-semibold pt-1">
           <div class="col-6">Hotel</div>
-          <div class="col-3">Status</div>
-          <div class="col-3">Details</div>
+          <div class="col-3 text-center">Status</div>
+          <div class="col-3 text-center">Details</div>
         </div>
         <hr class="border-dark-subtle my-2" />
         <div class="recent-bookings">
@@ -73,8 +73,8 @@
         <hr class="border-dark-subtle" />
         <div class="row fw-semibold pt-1">
           <div class="col-6">Hotel</div>
-          <div class="col-3">Status</div>
-          <div class="col-3">Details</div>
+          <div class="col-3 text-center">Status</div>
+          <div class="col-3 text-center">Details</div>
         </div>
         <hr class="border-dark-subtle my-2" />
         <div class="previous-bookings">
@@ -82,6 +82,142 @@
         </div>
       </div>
     </div>
+
+    <!-- Details Modal -->
+    <div
+      class="modal fade"
+      id="detailsModal"
+      tabindex="-1"
+      aria-labelledby="detailsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="bookingDetails">
+              Booking Details
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body bd gray_bg">
+            <div class="py-1">
+              <div class="bg-white mt-2 py-3">
+                <div class="container d-flex justify-content-between">
+                  <span>Hotel</span>
+                  <div class="d-flex align-items-center">
+                    <span
+                      id="hotelDisplay"
+                      class="pcolor fst-italic fw-light text-truncate"
+                      style="max-width: 200px"
+                    >
+                    </span>
+                  </div>
+                </div>
+                <hr class="border-dark-subtle mx-2" />
+                <div class="container d-flex justify-content-between">
+                  <span>Room</span>
+                  <div class="d-flex align-items-center">
+                    <span
+                      id="roomDisplay"
+                      class="pcolor fst-italic fw-light text-truncate"
+                      style="max-width: 200px"
+                    >
+                    </span>
+                  </div>
+                </div>
+                <hr class="border-dark-subtle mx-2" />
+                <div class="container d-flex justify-content-between">
+                  <span>Check-in</span>
+                  <div class="d-flex align-items-center">
+                    <span
+                      id="checkInDisplay"
+                      class="pcolor fst-italic fw-light text-truncate"
+                      style="max-width: 200px"
+                    >
+                    </span>
+                  </div>
+                </div>
+                <hr class="border-dark-subtle mx-2" />
+                <div class="container d-flex justify-content-between">
+                  <span>Check-out</span>
+                  <div class="d-flex align-items-center">
+                    <span
+                      id="checkOutDisplay"
+                      class="pcolor fst-italic fw-light text-truncate"
+                      style="max-width: 200px"
+                    >
+                    </span>
+                  </div>
+                </div>
+                <hr class="border-dark-subtle mx-2" />
+                <div class="container d-flex justify-content-between">
+                  <span>Adult Quantity</span>
+                  <div class="d-flex align-items-center">
+                    <span
+                      id="adultQuantityDisplay"
+                      class="pcolor fst-italic fw-light text-truncate"
+                      style="max-width: 200px"
+                    >
+                    </span>
+                  </div>
+                </div>
+                <hr class="border-dark-subtle mx-2" />
+                <div class="container d-flex justify-content-between">
+                  <span>Children Quantity</span>
+                  <div class="d-flex align-items-center">
+                    <span
+                      id="childrenQuantityDisplay"
+                      class="pcolor fst-italic fw-light text-truncate"
+                      style="max-width: 200px"
+                    >
+                    </span>
+                  </div>
+                </div>
+                <hr class="border-dark-subtle mx-2" />
+                <div class="container d-flex justify-content-between">
+                  <span>Status</span>
+                  <div class="d-flex align-items-center">
+                    <span
+                      id="statusDisplay"
+                      class="pcolor fst-italic fw-light text-truncate"
+                      style="max-width: 200px"
+                    >
+                    </span>
+                  </div>
+                </div>
+                <hr class="border-dark-subtle mx-2" />
+                <div class="container d-flex justify-content-between">
+                  <span>Total Amount</span>
+                  <div class="d-flex align-items-center">
+                    <span
+                      id="totalAmountDisplay"
+                      class="pcolor fst-italic fw-light text-truncate"
+                      style="max-width: 200px"
+                    >
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              id="cancelBookingButton"
+            >
+              Cancel Booking
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Detail Modal -->
   </body>
   <script>
     function goBack() {

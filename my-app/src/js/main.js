@@ -130,6 +130,17 @@ async function performSearch(query) {
   }
 }
 
+function openSearchModalAndPerformSearch(location) {
+  var input = document.getElementById("searchInput");
+  if (input) {
+    input.value = location;
+    performSearch(location);
+  }
+
+  var myModal = new bootstrap.Modal(document.getElementById("searchModal"), {});
+  myModal.show();
+}
+
 // Function to generate star rating
 function generateStarRating(rating) {
   let stars = ""; // Initialize the stars string
@@ -188,4 +199,5 @@ export {
   performSearch,
   generateStarRating,
   doLogout,
+  openSearchModalAndPerformSearch,
 };

@@ -189,15 +189,28 @@ body {
   color: #999;
 }
 
+.bg_gradient {
+  background: rgb(102, 204, 237);
+  background: linear-gradient(
+    180deg,
+    rgba(102, 204, 237, 1) 15%,
+    rgba(133, 214, 241, 1) 30%,
+    rgba(183, 224, 237, 1) 45%,
+    rgba(206, 235, 244, 1) 60%,
+    rgba(232, 243, 247, 1) 75%,
+    rgba(249, 249, 249, 1) 85%
+  );
+}
+
 .acc_bg {
   background: rgb(0, 150, 199);
   background: linear-gradient(
     180deg,
-    rgba(0, 150, 199, 1) 15%,
+    #0096c7 15%,
     rgba(76, 181, 216, 1) 30%,
     rgba(163, 217, 235, 1) 45%,
     rgba(206, 235, 244, 1) 60%,
-    rgba(249, 249, 249, 1) 75%
+    #f9f9f9 75%
   );
 }
 
@@ -367,6 +380,24 @@ body {
 
 .modal-footer.d-grid {
   justify-content: stretch !important;
+}
+
+#linkReviews {
+  text-decoration: none; /* Removes the underline */
+  color: inherit; /* Makes the color the same as the surrounding text */
+}
+
+#linkReviews:hover {
+  text-decoration: none; /* Removes the underline when hovered */
+}
+
+#hotelDesc {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.modal-body.bd {
+  padding: 0 !important;
 }
 
 /* ==== */

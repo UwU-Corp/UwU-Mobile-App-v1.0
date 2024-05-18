@@ -3,6 +3,7 @@ import {
   hotelImageUrl,
   searchModal,
   generateStarRating,
+  openSearchModalAndPerformSearch,
 } from "./main";
 
 // Import Images
@@ -12,6 +13,15 @@ import fq_white from "../assets/icon/faq-fill-white.svg";
 // Getting the search modal element and setting its onclick event to searchModal function
 const modalSearch = document.getElementById("searchModal");
 modalSearch.onclick = searchModal;
+
+const butuan = document.getElementById("butuan");
+butuan.onclick = () => openSearchModalAndPerformSearch("Butuan");
+
+const surigao = document.getElementById("surigao");
+surigao.onclick = () => openSearchModalAndPerformSearch("Surigao");
+
+const cabadbaran = document.getElementById("cabadbaran");
+cabadbaran.onclick = () => openSearchModalAndPerformSearch("Cabadbaran");
 
 // Top-bar change color on scroll
 window.addEventListener("scroll", function () {
