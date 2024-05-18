@@ -1,11 +1,18 @@
 {
   "appId": "com.example.app",
-  "appName": "UwU App",
+  "appName": "UwU",
   "bundledWebRuntime": false,
   "webDir": "dist",
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 0
+      "launchShowDuration": 4000,
+      "backgroundColor": "#ffffff",
+      "androidSpinnerStyle": "small",
+      "iosSpinnerStyle": "small",
+      "spinnerColor": "#0096c7",
+      "showSpinner": true,
+      "splashFullScreen": true,
+      "splashImmersive": true
     }
   }
 }
